@@ -1,17 +1,12 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FlightController extends GetxController{
-
-
-
+class FlightController extends GetxController {
   // single date picker from calender
 
   var selectedDate = DateTime.now().obs;
 // yaha par date time get kar raha ho calender see
-  chooseDatetime() async {
+  flightChoseDate() async {
     DateTime? pickerDate = await showDatePicker(
         context: Get.context!,
         initialDate: selectedDate.value,
@@ -25,9 +20,9 @@ class FlightController extends GetxController{
 
   bool disableDate(DateTime day) {
     if (day.isAfter(DateTime.now().subtract(Duration(days: 1)))
-    //  && day.isBefore(DateTime.now().add(Duration(days: 5)))
+        //  && day.isBefore(DateTime.now().add(Duration(days: 5)))
 
-    ) {
+        ) {
       return true;
     }
     return false;
@@ -59,5 +54,4 @@ class FlightController extends GetxController{
       dateRange.value = picked;
     }
   }
-
 }

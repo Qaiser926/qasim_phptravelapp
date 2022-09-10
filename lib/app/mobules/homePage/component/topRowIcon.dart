@@ -78,7 +78,7 @@ class _TopRowIconState extends State<TopRowIcon> {
             height: Get.size.height * 0.14,
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: controller.modal.value.modules!.length,
+                itemCount: controller.modal.value.modules?.length,
                 // itemCount: 2,
                 // itemCount: imagelist.length,
                 itemBuilder: (context, index) {

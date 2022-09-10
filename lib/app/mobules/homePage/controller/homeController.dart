@@ -125,8 +125,6 @@
 //
 // }
 
-
-
 import 'dart:convert';
 import 'dart:developer';
 
@@ -141,10 +139,8 @@ import 'package:phptravelapp/app/mobules/homePage/HomeModel/modelClass.dart';
 import 'package:phptravelapp/app/mobules/homePage/api_servies/api_provider.dart';
 import 'package:phptravelapp/app/mobules/homePage/bottomNav/bottomNavigation.dart';
 
-
 // class HomeController extends GetxController with StateMixin<List<dynamic>> {
 // class HomeController extends GetxController with StateMixin<List<dynamic>>{
-
 
 class HomeController extends GetxController {
   RxInt currentIndex = 0.obs;
@@ -153,27 +149,36 @@ class HomeController extends GetxController {
   var isLoading = false.obs;
   var modal = HomeOfferListModelClass().obs;
   var isEmptyData = false.obs;
-  List<TourAppModel> modelDataList=List<TourAppModel>.empty().obs;
+  // List<TourAppModel> modelDataList=List<TourAppModel>.empty().obs;
 
-  List<Widget> homeViewWidget = [
-    BottomNavigationBarPage()
-  ];
+  List<HomeOfferListModelClass> homeofferControlerList =
+      <HomeOfferListModelClass>[].obs;
+
+  // List<HomeOfferListModelClass> _productModelListData =
+  //     List<HomeOfferListModelClass>.empty().obs;
+  // List<HomeOfferListModelClass> get productModelListData =>
+  //     _productModelListData;
+
+  List<Widget> homeViewWidget = [BottomNavigationBarPage()];
   @override
   void onInit() {
     super.onInit();
     ApiProvider.getUserData();
     update();
   }
+
   @override
   void onReady() {
     super.onReady();
   }
+
   @override
-  void onClose(){
+  void onClose() {
     super.onClose();
   }
+
 // original data
- fatchProductList() async {
+  fatchProductList() async {
     // print("tapped $id");
     try {
       isLoading(true);
@@ -189,9 +194,7 @@ class HomeController extends GetxController {
       }
     } finally {
       isLoading(false);
-
     }
-
   }
 
   /*Box? box;
@@ -237,10 +240,9 @@ class HomeController extends GetxController {
     }
   }
 */
-  void cleanUpTask(){
+  void cleanUpTask() {
     print('clean up task');
   }
-
 
   //
   //

@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
+import 'package:phptravelapp/app/mobules/hotelPage/hotelView/featureHotelDetail/featureHotelDetail.dart';
 
 class FeatureHotel extends StatefulWidget {
   @override
@@ -66,120 +67,162 @@ class _FeatureHotelState extends State<FeatureHotel> {
                           }
                           final item = controller.modal.value.featuredHotels;
 
-                          return Column(
-                            children: [
-                              Stack(
+                          return GestureDetector(
+                            onTap: () {
+                              Get.to(FeatureHotelDetailPage(
+                                title: item[index].title,
+                                des: item[index].desc,
+                                location: item[index].location,
+                                review: item[index]
+                                    .avgReviews!
+                                    .totalReviews
+                                    .toString(),
+                                icon: item[index].toString(),
+                                name: item[index].toString(),
+                                // pic=item[index].thumbnail![index],
+                                discoun:
+                                    int.parse(item[index].discount.toString()),
+                                pic: item[index].thumbnail.toString(),
+                                startCount: int.parse(
+                                    item[index].starsCount.toString()),
+                              ));
+                            },
+                            child: Container(
+                              child: Column(
                                 children: [
-                                  SizedBox(
-                                    width: Get.size.width,
-                                    height: Get.size.height * 0.23,
-                                    child: Image.network(
-                                      item![index %
-                                              controller.modal.value
-                                                  .featuredHotels!.length]
-                                          .thumbnail
-                                          .toString(),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Container(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  Stack(
                                     children: [
-                                      Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            item[index %
-                                                    controller.modal.value
-                                                        .featuredHotels!.length]
-                                                .title
-                                                .toString(),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700),
-                                          )),
-
-                                      Text(
-                                        item[index %
-                                                controller.modal.value
-                                                    .featuredHotels!.length]
-                                            .location
-                                            .toString(),
-                                        style: TextStyle(),
-                                      ),
                                       SizedBox(
-                                        height: 8,
+                                        width: Get.size.width,
+                                        height: Get.size.height * 0.23,
+                                        child: Image.network(
+                                          item?[index %
+                                                      controller
+                                                          .modal
+                                                          .value
+                                                          .featuredHotels!
+                                                          .length]
+                                                  .thumbnail ??
+                                              "value",
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-
-                                      RatingBarIndicator(
-                                        // rating: 3.3,
-                                        rating: double.parse(item[index %
-                                                controller.modal.value
-                                                    .featuredHotels!.length]
-                                            .avgReviews!
-                                            .totalReviews
-                                            .toString()),
-                                        itemBuilder: (context, index) =>
-                                            Icon(Icons.star, color: Colors.red),
-                                        itemCount: 5,
-
-                                        itemSize: 17.5,
-                                        direction: Axis.horizontal,
-                                      ),
-                                      SizedBox(
-                                        width: 6,
-                                      ),
-                                      // Text("${item[index%controller.modal.value.featuredHotels!.length].stars.toString()} Reviews"),
-
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                        TextSpan(
-                                            text: 'USD',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 17)),
-                                        TextSpan(text: '  '),
-                                        TextSpan(
-                                            text: item[index %
-                                                    controller.modal.value
-                                                        .featuredHotels!.length]
-                                                .price
-                                                .toString(),
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black)),
-                                      ])),
-                                      Row(
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 10, right: 10, top: 10),
+                                    child: Container(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
+                                          Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                item?[index %
+                                                            controller
+                                                                .modal
+                                                                .value
+                                                                .featuredHotels!
+                                                                .length]
+                                                        .title ??
+                                                    "title",
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w700),
+                                              )),
+
                                           Text(
-                                            'featurehotelDetailText'.tr,
-                                            style: TextStyle(fontSize: 12),
+                                            item?[index %
+                                                        controller
+                                                            .modal
+                                                            .value
+                                                            .featuredHotels!
+                                                            .length]
+                                                    .location ??
+                                                "location",
+                                            style: TextStyle(),
                                           ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+
+                                          RatingBarIndicator(
+                                            // rating: 3.3,
+                                            rating: double.parse(item?[index %
+                                                        controller
+                                                            .modal
+                                                            .value
+                                                            .featuredHotels!
+                                                            .length]
+                                                    .avgReviews!
+                                                    .totalReviews ??
+                                                "totalReview"),
+                                            itemBuilder: (context, index) =>
+                                                Icon(Icons.star,
+                                                    color: Colors.red),
+                                            itemCount: 5,
+
+                                            itemSize: 17.5,
+                                            direction: Axis.horizontal,
+                                          ),
+
                                           SizedBox(
                                             width: 6,
                                           ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 12,
+                                          // Text("${item[index%controller.modal.value.featuredHotels!.length].stars.toString()} Reviews"),
+
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          RichText(
+                                              text: TextSpan(children: [
+                                            TextSpan(
+                                                text: 'USD',
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 17)),
+                                            TextSpan(text: '  '),
+                                            TextSpan(
+                                                text: item![index %
+                                                        controller
+                                                            .modal
+                                                            .value
+                                                            .featuredHotels!
+                                                            .length]
+                                                    .price
+                                                    .toString(),
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black)),
+                                          ])),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'featurehotelDetailText'.tr,
+                                                style: TextStyle(fontSize: 12),
+                                              ),
+                                              SizedBox(
+                                                width: 6,
+                                              ),
+                                              Icon(
+                                                Icons.arrow_forward_ios,
+                                                size: 12,
+                                              )
+                                            ],
                                           )
                                         ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           );
                         },
                       );

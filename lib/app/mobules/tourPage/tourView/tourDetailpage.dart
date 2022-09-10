@@ -32,7 +32,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -44,7 +43,6 @@ import 'package:phptravelapp/app/mobules/tourPage/tourView/searchPage.dart';
 import 'package:phptravelapp/app/reusableText/reusableText.dart';
 
 class TourSearchPage extends StatefulWidget {
-
   @override
   State<TourSearchPage> createState() => _TourSearchPageState();
 }
@@ -54,10 +52,10 @@ class _TourSearchPageState extends State<TourSearchPage> {
 
   bool isVisible = false;
 
-  String Travellers='Travellers'.tr;
+  String Travellers = 'Travellers'.tr;
   int childCount = 0;
   int adultCount = 2;
-  int roomcout=1;
+  int roomcout = 1;
   @override
   void onInit() {
     print(argumentData[1]);
@@ -67,8 +65,8 @@ class _TourSearchPageState extends State<TourSearchPage> {
 
   final selectedValue = null;
 
-  List listitem = ['paksitan','india','china','landon','us','canada'];
-  var valueChose='paksitan';
+  List listitem = ['paksitan', 'india', 'china', 'landon', 'us', 'canada'];
+  var valueChose = 'paksitan';
 
   final homecontroler = Get.put(TourController());
 
@@ -79,8 +77,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
       appBar: AppBar(
         title: Text('Search Tour'),
       ),
-      body:
-      Padding(
+      body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Container(
           child: Column(
@@ -122,32 +119,27 @@ class _TourSearchPageState extends State<TourSearchPage> {
               SizedBox(
                 height: Get.size.height * 0.01,
               ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          setState(() {
-                            isVisible = !isVisible;
-                          });
-                        },
-                        child: travellerDropdownContainer(
-
-                            '$Travellers ${adultCount + childCount}',
-                            Icons.woman),
-                      ),
-                      Stack(
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(top: 40),
-                              child: SearchButton()),
-                          showTravellerRemoveAddVisisbiltyContainer(),
-
-                        ],
-                      )
-                    ],
+              Column(
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    child: travellerDropdownContainer(
+                        '$Travellers ${adultCount + childCount}', Icons.woman),
                   ),
-
-
+                  Stack(
+                    children: [
+                      Container(
+                          margin: EdgeInsets.only(top: 40),
+                          child: SearchButton()),
+                      showTravellerRemoveAddVisisbiltyContainer(),
+                    ],
+                  )
+                ],
+              ),
             ],
           ),
         ),
@@ -180,98 +172,117 @@ class _TourSearchPageState extends State<TourSearchPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-
-              visibilityContainerRow('Adults'.tr,  () {
-                setState(() {
-                  adultCount++;
-                });
-              },'${adultCount}', () {
-                setState(() {
-                adultCount<=0?adultCount=0:  adultCount--;
-                });
-              },Icons.person_outline_outlined),
-              visibilityContainerRow('Childs'.tr,  () {
-                setState(() {
-                 childCount++;
-                });
-              },'${childCount}', () {
-                setState(() {
-                  childCount<=0?childCount=0:   childCount--;
-
-                });
-              },Icons.woman),
-
-
+              visibilityContainerRow(
+                  'Adults'.tr,
+                  () {
+                    setState(() {
+                      adultCount++;
+                    });
+                  },
+                  '${adultCount}',
+                  () {
+                    setState(() {
+                      adultCount <= 0 ? adultCount = 0 : adultCount--;
+                    });
+                  },
+                  Icons.person_outline_outlined),
+              visibilityContainerRow(
+                  'Childs'.tr,
+                  () {
+                    setState(() {
+                      childCount++;
+                    });
+                  },
+                  '${childCount}',
+                  () {
+                    setState(() {
+                      childCount <= 0 ? childCount = 0 : childCount--;
+                    });
+                  },
+                  Icons.woman),
             ],
           ),
         ),
       ),
     );
   }
-  Widget visibilityContainerRow(String title,Function() plusCount,String hint,Function() minusCount,IconData visibleContainerIcon){
-    return  Row(
+
+  Widget visibilityContainerRow(String title, Function() plusCount, String hint,
+      Function() minusCount, IconData visibleContainerIcon) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-            child:  Row(
-              children: [
-                Icon(visibleContainerIcon,color: Colors.grey,),
-                SizedBox(width: 5,),
-
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
-            )),
+            child: Row(
+          children: [
+            Icon(
+              visibleContainerIcon,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              title,
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        )),
         Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 13),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.08,
-                  height: Get.size.height * 0.07,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 13),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: TColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.08,
+              height: Get.size.height * 0.07,
+              child: InkWell(
+                  onTap: minusCount,
+                  child: Center(
+                      child: PlusMinus(
+                    title: '-',
+                    size: 30,
+                  ))),
+            ),
+            // Container(
+            //     width: 35,
+            //     height: 25,
+            //     child: TextField(
+            //       decoration: InputDecoration(
+            //           hintText: '$adultCount',
+            //           border: InputBorder.none),
+            //     )),
+            Text(hint),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: TColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.08,
+              height: Get.size.height * 0.07,
+              child: Center(
                   child: InkWell(
-                      onTap: minusCount,
-                      child: Center(
-    child: PlusMinus(title: '-',size: 30,))),
-                ),
-                // Container(
-                //     width: 35,
-                //     height: 25,
-                //     child: TextField(
-                //       decoration: InputDecoration(
-                //           hintText: '$adultCount',
-                //           border: InputBorder.none),
-                //     )),
-                Text(hint),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.08,
-                  height: Get.size.height * 0.07,
-                  child: Center(child: InkWell(
-                    onTap: plusCount,
-                      child: PlusMinus(title: '+',size: 24,))
-                  ),
-                )
-              ],
-            )),
+                      onTap: plusCount,
+                      child: PlusMinus(
+                        title: '+',
+                        size: 24,
+                      ))),
+            )
+          ],
+        )),
       ],
     );
   }
+
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-        // color: TColor.mainColor,
+          // color: TColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -296,6 +307,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
       ),
     );
   }
+
   Widget SearchButton() {
     return MaterialButton(
       height: Get.size.height * 0.06,
@@ -314,7 +326,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
     );
   }
 
-  Widget travellerDropdownContainer( String hint, IconData icon) {
+  Widget travellerDropdownContainer(String hint, IconData icon) {
     return Container(
       width: Get.size.width,
       height: Get.size.height * 0.07,

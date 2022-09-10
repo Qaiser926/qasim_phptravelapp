@@ -190,6 +190,28 @@ class ApiProvider {
       // print('yaha catch me error he ${e}');
     }
   }
+
+  // {
+  //   // var headers = {
+  //   //   //'Content-Type': 'application/json',
+  //   //   'Authorization': Get.find<storage_controller>().userModel.value.success!.token,
+  //   //
+  //   // };
+  //   var response = await http.get(
+  //     Uri.parse(
+  //         'http://phptravels.net/api/api/main/app?appKey=phptravels&lang=en&currency=usd'),
+  //     // headers: {'Authorization':"Bearer "+Get.find<storage_controller>().userModel.value.success!.token!});
+  //   );
+  //   print(response.body.toString());
+  //   // print("My All Events HEADERS ====> ${headers}");
+  //   if (response.toString() != "null" &&
+  //       response.body.toString() != "null" &&
+  //       response.statusCode == 200) {
+  //     return homeOfferListModelClassFromJson(response.body);
+  //   } else {
+  //     return HomeOfferListModelClass();
+  //   }
+  // }
 }
 
 

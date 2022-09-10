@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,45 +12,39 @@ import 'app/mobules/homePage/api_servies/api_provider.dart';
 import 'app/mobules/homePage/controller/homeController.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();  // language changing store karta he
+  WidgetsFlutterBinding.ensureInitialized(); // language changing store karta he
   await GetStorage.init(); // language changing store karta he
   await Hive.initFlutter();
   setPathUrlStrategy();
   // runApp(DevicePreview(builder: (context)=>travelapp()));
   runApp(travelapp());
 }
+
 class travelapp extends StatefulWidget {
-   travelapp({Key? key}) : super(key: key);
+  travelapp({Key? key}) : super(key: key);
 
   @override
   State<travelapp> createState() => _travelappState();
 }
 
 class _travelappState extends State<travelapp> {
-
-
   @override
   Widget build(BuildContext context) {
-    return  GetMaterialApp(
+    return GetMaterialApp(
       // locale: DevicePreview.locale(context),
       // builder: DevicePreview.appBuilder,
       // ye niche wala separate language class k liye
       translations: TranslationPage(),
 
-
-
-    // language change k liye he
-      locale:TranslationPage().getCurrentLocale(),
-      fallbackLocale: Locale('en','US'),
-
+      // language change k liye he
+      locale: TranslationPage().getCurrentLocale(),
+      fallbackLocale: Locale('en', 'US'),
 
       // fallbackLocale: Locale('en'),
       // locale: Locale('en','US'),
       // fallbackLocale: Locale('en','US'),
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          useMaterial3: true
-      ),
+      theme: ThemeData(useMaterial3: true),
       getPages: AppPages.routes,
       initialRoute: AppPages.INITIAL,
     );

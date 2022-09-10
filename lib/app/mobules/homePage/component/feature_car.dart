@@ -82,11 +82,11 @@ class _FeatureCarState extends State<FeatureCar> {
                                     width: Get.size.width,
                                     height: Get.size.height * 0.23,
                                     child: Image.network(
-                                      item![index %
-                                              controller.modal.value
-                                                  .featuredCars!.length]
-                                          .thumbnail
-                                          .toString(),
+                                      item?[index %
+                                                  controller.modal.value
+                                                      .featuredCars!.length]
+                                              .thumbnail ??
+                                          "thumbnail",
                                       fit: BoxFit.cover,
                                     ),
                                   ),
@@ -104,21 +104,24 @@ class _FeatureCarState extends State<FeatureCar> {
                                       Align(
                                           alignment: Alignment.topLeft,
                                           child: Text(
-                                            item[index %
-                                                    controller.modal.value
-                                                        .featuredCars!.length]
-                                                .title
-                                                .toString(),
+                                            item?[index %
+                                                        controller
+                                                            .modal
+                                                            .value
+                                                            .featuredCars!
+                                                            .length]
+                                                    .title ??
+                                                "titile",
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w700),
                                           )),
 
                                       Text(
-                                        item[index %
-                                                controller.modal.value
-                                                    .featuredCars!.length]
-                                            .location
-                                            .toString(),
+                                        item?[index %
+                                                    controller.modal.value
+                                                        .featuredCars!.length]
+                                                .location ??
+                                            "location",
                                         style: TextStyle(),
                                       ),
                                       SizedBox(
@@ -136,12 +139,17 @@ class _FeatureCarState extends State<FeatureCar> {
                                               vertical: 5.5, horizontal: 7.4),
                                           child: RatingBarIndicator(
                                             // rating: 3.3,
-                                            rating: double.parse(item[index %
-                                                    controller.modal.value
-                                                        .featuredCars!.length]
-                                                .avgReviews!
-                                                .totalReviews
-                                                .toString()),
+                                            rating: double.parse(
+                                              item?[index %
+                                                          controller
+                                                              .modal
+                                                              .value
+                                                              .featuredCars!
+                                                              .length]
+                                                      .avgReviews!
+                                                      .totalReviews ??
+                                                  "total remvoew",
+                                            ),
                                             itemBuilder: (context, index) =>
                                                 Icon(Icons.star,
                                                     color: Colors.white),
@@ -170,7 +178,7 @@ class _FeatureCarState extends State<FeatureCar> {
                                                 fontSize: 17)),
                                         TextSpan(text: '  '),
                                         TextSpan(
-                                            text: item[index %
+                                            text: item![index %
                                                     controller.modal.value
                                                         .featuredCars!.length]
                                                 .price

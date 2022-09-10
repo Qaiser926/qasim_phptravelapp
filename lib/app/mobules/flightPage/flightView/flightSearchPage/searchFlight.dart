@@ -8,7 +8,6 @@ import 'package:phptravelapp/app/mobules/flightPage/flightController/flightContr
 import 'package:phptravelapp/app/mobules/hotelPage/hotelView/hotelSearchPage/hotelSearchPage.dart';
 import 'package:phptravelapp/app/reusableText/reusableText.dart';
 
-
 class FlightPage extends StatefulWidget {
   const FlightPage({super.key});
 
@@ -20,11 +19,11 @@ class _FlightPageState extends State<FlightPage> {
   dynamic argumentData = Get.arguments;
 
   bool isVisible = false;
-  String Travellers='Travellers'.tr;
-  String Rooms='Rooms'.tr;
+  String Travellers = 'Travellers'.tr;
+  String Rooms = 'Rooms'.tr;
   int childCount = 0;
   int adultCount = 2;
-  int roomcout=1;
+  int roomcout = 1;
   @override
   void onInit() {
     print(argumentData[1]);
@@ -34,10 +33,10 @@ class _FlightPageState extends State<FlightPage> {
 
   final selectedValue = null;
 
-  List listitem = ['paksitan','india','china','landon','us','canada'];
-  var valueChose='paksitan';
+  List listitem = ['paksitan', 'india', 'china', 'landon', 'us', 'canada'];
+  var valueChose = 'paksitan';
 
-  final homecontroler=Get.put(FlightController());
+  final homecontroler = Get.put(FlightController());
   // final homecontroler = Get.find<FlightController>();
 
   @override
@@ -98,24 +97,19 @@ class _FlightPageState extends State<FlightPage> {
                             isVisible = !isVisible;
                           });
                         },
-                        child:travellerDropdownContainer(
-
+                        child: travellerDropdownContainer(
                             '$Travellers ${adultCount + childCount} $Rooms ${roomcout}',
                             Icons.directions_walk)),
                     Stack(
                       children: [
-
                         Container(
                             margin: EdgeInsets.only(top: 40),
                             child: SearchButton()),
                         showTravellerRemoveAddVisisbiltyContainer(),
-
-
                       ],
                     )
                   ],
                 ),
-
               ],
             ),
           ),
@@ -149,37 +143,58 @@ class _FlightPageState extends State<FlightPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-              visibilityContainerRow('Rooms'.tr,  () {
-                setState(() {
-                  roomcout++;
-                });
-              },'${roomcout}', () {
-                setState(() {
-                 roomcout<=0?roomcout=0: roomcout--;
-                });
-              },Icons.bedroom_child_sharp),
-              visibilityContainerRow('Adults'.tr,  () {
-                setState(() {
-                  adultCount++;
-                });
-              },'${adultCount}', () {
-                setState(() {
-                  adultCount<=0?adultCount=0: adultCount--;
-                });
-              },Icons.person_outline_outlined),
-              visibilityContainerRow('Childs'.tr,  () {
-                setState(() {
-                  childCount++;
-                });
-              },'${childCount}', () {
-                setState(() {
-                  childCount<=0?childCount=0: childCount--;
-                });
-              },Icons.woman),
-              SizedBox(height: 4,),
+              visibilityContainerRow(
+                  'Rooms'.tr,
+                  () {
+                    setState(() {
+                      roomcout++;
+                    });
+                  },
+                  '${roomcout}',
+                  () {
+                    setState(() {
+                      roomcout <= 0 ? roomcout = 0 : roomcout--;
+                    });
+                  },
+                  Icons.bedroom_child_sharp),
+              visibilityContainerRow(
+                  'Adults'.tr,
+                  () {
+                    setState(() {
+                      adultCount++;
+                    });
+                  },
+                  '${adultCount}',
+                  () {
+                    setState(() {
+                      adultCount <= 0 ? adultCount = 0 : adultCount--;
+                    });
+                  },
+                  Icons.person_outline_outlined),
+              visibilityContainerRow(
+                  'Childs'.tr,
+                  () {
+                    setState(() {
+                      childCount++;
+                    });
+                  },
+                  '${childCount}',
+                  () {
+                    setState(() {
+                      childCount <= 0 ? childCount = 0 : childCount--;
+                    });
+                  },
+                  Icons.woman),
+              SizedBox(
+                height: 4,
+              ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: commonText(title: 'nationality'.tr,fontWeight: FontWeight.bold,size: 18,)),
+                  child: commonText(
+                    title: 'nationality'.tr,
+                    fontWeight: FontWeight.bold,
+                    size: 18,
+                  )),
               // dropdownButton
               dropDownButton(),
             ],
@@ -188,22 +203,25 @@ class _FlightPageState extends State<FlightPage> {
       ),
     );
   }
-  Widget dropDownButton(){
-    return   Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 10),
+
+  Widget dropDownButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       child: Container(
         width: double.infinity,
-        height: Get.size.height*0.074,
+        height: Get.size.height * 0.074,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
           color: TColor.mainColor,
         ),
         child: Center(
           child: DropdownButtonFormField(
-
               decoration: InputDecoration(
                 border: InputBorder.none,
-                prefixIcon: Icon(Icons.wordpress_rounded,color: Colors.grey,),
+                prefixIcon: Icon(
+                  Icons.wordpress_rounded,
+                  color: Colors.grey,
+                ),
               ),
               icon: Padding(
                 padding: const EdgeInsets.only(right: 6),
@@ -222,77 +240,91 @@ class _FlightPageState extends State<FlightPage> {
                 return DropdownMenuItem(
                   child: Text(e),
                   value: e,
-
                 );
               }).toList(),
-              onChanged: (String? value){
-                setState((){
-                  valueChose=value!;
+              onChanged: (String? value) {
+                setState(() {
+                  valueChose = value!;
                 });
               }),
         ),
       ),
     );
   }
-  Widget visibilityContainerRow(String title,Function() plusCount,String hint,Function() minusCount,IconData visibleContainerIcon){
-    return  Row(
+
+  Widget visibilityContainerRow(String title, Function() plusCount, String hint,
+      Function() minusCount, IconData visibleContainerIcon) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-            child:  Row(
-              children: [
-                Icon(visibleContainerIcon,color: Colors.grey,),
-                SizedBox(width: 5,),
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
-            )),
+            child: Row(
+          children: [
+            Icon(
+              visibleContainerIcon,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              title,
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        )),
         Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 13),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.084,
-                  height: Get.size.height * 0.084,
-                  child: InkWell(
-                      onTap: minusCount,
-                      child: Center(child: PlusMinus(title: '-',size: 30,))),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 13),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: TColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.084,
+              height: Get.size.height * 0.084,
+              child: InkWell(
+                  onTap: minusCount,
+                  child: Center(
+                      child: PlusMinus(
+                    title: '-',
+                    size: 30,
+                  ))),
+            ),
+            // Container(
+            //     width: 35,
+            //     height: 25,
+            //     child: TextField(
+            //       decoration: InputDecoration(
+            //           hintText: '$adultCount',
+            //           border: InputBorder.none),
+            //     )),
+            Text(hint),
+            Container(
+                margin: EdgeInsets.only(left: 10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: TColor.mainColor.withOpacity(0.6),
                 ),
-                // Container(
-                //     width: 35,
-                //     height: 25,
-                //     child: TextField(
-                //       decoration: InputDecoration(
-                //           hintText: '$adultCount',
-                //           border: InputBorder.none),
-                //     )),
-                Text(hint),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.084,
-                  height: Get.size.height * 0.084,
+                width: Get.size.width * 0.084,
+                height: Get.size.height * 0.084,
+                child: InkWell(
+                    child: Center(
                   child: InkWell(
-                    child: Center(child: InkWell(
-                    onTap: plusCount,
-                    child: PlusMinus(title: '+',size: 24,)),
-                  )
-                ))
-              ],
-            )),
+                      onTap: plusCount,
+                      child: PlusMinus(
+                        title: '+',
+                        size: 24,
+                      )),
+                )))
+          ],
+        )),
       ],
     );
   }
+
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
@@ -341,7 +373,7 @@ class _FlightPageState extends State<FlightPage> {
     );
   }
 
-  Widget travellerDropdownContainer( String hint, IconData icon) {
+  Widget travellerDropdownContainer(String hint, IconData icon) {
     return Container(
       width: Get.size.width,
       height: Get.size.height * 0.07,

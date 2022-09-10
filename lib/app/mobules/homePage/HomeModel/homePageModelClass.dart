@@ -4,9 +4,11 @@
 
 import 'dart:convert';
 
-HomeOfferListModelClass homeOfferListModelClassFromJson(String str) => HomeOfferListModelClass.fromJson(json.decode(str));
+HomeOfferListModelClass homeOfferListModelClassFromJson(String str) =>
+    HomeOfferListModelClass.fromJson(json.decode(str));
 
-String homeOfferListModelClassToJson(HomeOfferListModelClass data) => json.encode(data.toJson());
+String homeOfferListModelClassToJson(HomeOfferListModelClass data) =>
+    json.encode(data.toJson());
 
 class HomeOfferListModelClass {
   HomeOfferListModelClass({
@@ -35,45 +37,63 @@ class HomeOfferListModelClass {
   Cms? cms;
   App? app;
   List<Social>? social;
- late List<Featured>? featuredHotels;
-  late  List<FeaturedFlight>? featuredFlights;
+  late List<Featured>? featuredHotels;
+  late List<FeaturedFlight>? featuredFlights;
   late List<Featured>? featuredTours;
-  late  List<FeaturedCar>? featuredCars;
+  late List<FeaturedCar>? featuredCars;
   late List<FeaturedBlog>? featuredBlog;
 
-  factory HomeOfferListModelClass.fromJson(Map<String, dynamic> json) => HomeOfferListModelClass(
-    modules: List<Module>.from(json["modules"].map((x) => Module.fromJson(x))),
-    slider: List<Slider>.from(json["slider"].map((x) => Slider.fromJson(x))),
-    paymentGateways: List<PaymentGateway>.from(json["payment_gateways"].map((x) => PaymentGateway.fromJson(x))),
-    extras: List<Extra>.from(json["extras"].map((x) => Extra.fromJson(x))),
-    currencies: List<Currency>.from(json["currencies"].map((x) => Currency.fromJson(x))),
-    languages: List<Language>.from(json["languages"].map((x) => Language.fromJson(x))),
-    cms: Cms.fromJson(json["cms"]),
-    app: App.fromJson(json["app"]),
-    social: List<Social>.from(json["social"].map((x) => Social.fromJson(x))),
-    featuredHotels: List<Featured>.from(json["featured_hotels"].map((x) => Featured.fromJson(x))),
-    featuredFlights: List<FeaturedFlight>.from(json["featured_flights"].map((x) => FeaturedFlight.fromJson(x))),
-    featuredTours: List<Featured>.from(json["featured_tours"].map((x) => Featured.fromJson(x))),
-    featuredCars: List<FeaturedCar>.from(json["featured_cars"].map((x) => FeaturedCar.fromJson(x))),
-    featuredBlog: List<FeaturedBlog>.from(json["featured_blog"].map((x) => FeaturedBlog.fromJson(x))),
-  );
+  factory HomeOfferListModelClass.fromJson(Map<String, dynamic> json) =>
+      HomeOfferListModelClass(
+        modules:
+            List<Module>.from(json["modules"].map((x) => Module.fromJson(x))),
+        slider:
+            List<Slider>.from(json["slider"].map((x) => Slider.fromJson(x))),
+        paymentGateways: List<PaymentGateway>.from(
+            json["payment_gateways"].map((x) => PaymentGateway.fromJson(x))),
+        extras: List<Extra>.from(json["extras"].map((x) => Extra.fromJson(x))),
+        currencies: List<Currency>.from(
+            json["currencies"].map((x) => Currency.fromJson(x))),
+        languages: List<Language>.from(
+            json["languages"].map((x) => Language.fromJson(x))),
+        cms: Cms.fromJson(json["cms"]),
+        app: App.fromJson(json["app"]),
+        social:
+            List<Social>.from(json["social"].map((x) => Social.fromJson(x))),
+        featuredHotels: List<Featured>.from(
+            json["featured_hotels"].map((x) => Featured.fromJson(x))),
+        featuredFlights: List<FeaturedFlight>.from(
+            json["featured_flights"].map((x) => FeaturedFlight.fromJson(x))),
+        featuredTours: List<Featured>.from(
+            json["featured_tours"].map((x) => Featured.fromJson(x))),
+        featuredCars: List<FeaturedCar>.from(
+            json["featured_cars"].map((x) => FeaturedCar.fromJson(x))),
+        featuredBlog: List<FeaturedBlog>.from(
+            json["featured_blog"].map((x) => FeaturedBlog.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "modules": List<dynamic>.from(modules!.map((x) => x.toJson())),
-    "slider": List<dynamic>.from(slider!.map((x) => x.toJson())),
-    "payment_gateways": List<dynamic>.from(paymentGateways!.map((x) => x.toJson())),
-    "extras": List<dynamic>.from(extras!.map((x) => x.toJson())),
-    "currencies": List<dynamic>.from(currencies!.map((x) => x.toJson())),
-    "languages": List<dynamic>.from(languages!.map((x) => x.toJson())),
-    "cms": cms!.toJson(),
-    "app": app!.toJson(),
-    "social": List<dynamic>.from(social!.map((x) => x.toJson())),
-    "featured_hotels": List<dynamic>.from(featuredHotels!.map((x) => x.toJson())),
-    "featured_flights": List<dynamic>.from(featuredFlights!.map((x) => x.toJson())),
-    "featured_tours": List<dynamic>.from(featuredTours!.map((x) => x.toJson())),
-    "featured_cars": List<dynamic>.from(featuredCars!.map((x) => x.toJson())),
-    "featured_blog": List<dynamic>.from(featuredBlog!.map((x) => x.toJson())),
-  };
+        "modules": List<dynamic>.from(modules!.map((x) => x.toJson())),
+        "slider": List<dynamic>.from(slider!.map((x) => x.toJson())),
+        "payment_gateways":
+            List<dynamic>.from(paymentGateways!.map((x) => x.toJson())),
+        "extras": List<dynamic>.from(extras!.map((x) => x.toJson())),
+        "currencies": List<dynamic>.from(currencies!.map((x) => x.toJson())),
+        "languages": List<dynamic>.from(languages!.map((x) => x.toJson())),
+        "cms": cms!.toJson(),
+        "app": app!.toJson(),
+        "social": List<dynamic>.from(social!.map((x) => x.toJson())),
+        "featured_hotels":
+            List<dynamic>.from(featuredHotels!.map((x) => x.toJson())),
+        "featured_flights":
+            List<dynamic>.from(featuredFlights!.map((x) => x.toJson())),
+        "featured_tours":
+            List<dynamic>.from(featuredTours!.map((x) => x.toJson())),
+        "featured_cars":
+            List<dynamic>.from(featuredCars!.map((x) => x.toJson())),
+        "featured_blog":
+            List<dynamic>.from(featuredBlog!.map((x) => x.toJson())),
+      };
 }
 
 class App {
@@ -122,50 +142,50 @@ class App {
   String? metaDescription;
 
   factory App.fromJson(Map<String, dynamic> json) => App(
-    appname: json["appname"],
-    siteUrl: json["site_url"],
-    offline: json["offline"],
-    offlineMsg: json["offline_msg"],
-    restrictWebsite: json["restrict_website"],
-    allowRegistration: json["allow_registration"],
-    allowAgentRegistration: json["allow_agent_registration"],
-    suppliersRegistration: json["suppliers_registration"],
-    gmapKey: json["gmap_key"],
-    defaultValueLanguage: json["defaultValue_language"],
-    multiCurrency: json["multi_currency"],
-    multiLanguage: json["multi_language"],
-    currencyCode: json["currency_code"],
-    copyright: json["copyright"],
-    email: json["email"],
-    phone: json["phone"],
-    address: json["address"],
-    metaTitle: json["meta_title"],
-    metaKeywords: json["meta_keywords"],
-    metaDescription: json["meta_description"],
-  );
+        appname: json["appname"],
+        siteUrl: json["site_url"],
+        offline: json["offline"],
+        offlineMsg: json["offline_msg"],
+        restrictWebsite: json["restrict_website"],
+        allowRegistration: json["allow_registration"],
+        allowAgentRegistration: json["allow_agent_registration"],
+        suppliersRegistration: json["suppliers_registration"],
+        gmapKey: json["gmap_key"],
+        defaultValueLanguage: json["defaultValue_language"],
+        multiCurrency: json["multi_currency"],
+        multiLanguage: json["multi_language"],
+        currencyCode: json["currency_code"],
+        copyright: json["copyright"],
+        email: json["email"],
+        phone: json["phone"],
+        address: json["address"],
+        metaTitle: json["meta_title"],
+        metaKeywords: json["meta_keywords"],
+        metaDescription: json["meta_description"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "appname": appname,
-    "site_url": siteUrl,
-    "offline": offline,
-    "offline_msg": offlineMsg,
-    "restrict_website": restrictWebsite,
-    "allow_registration": allowRegistration,
-    "allow_agent_registration": allowAgentRegistration,
-    "suppliers_registration": suppliersRegistration,
-    "gmap_key": gmapKey,
-    "defaultValue_language": defaultValueLanguage,
-    "multi_currency": multiCurrency,
-    "multi_language": multiLanguage,
-    "currency_code": currencyCode,
-    "copyright": copyright,
-    "email": email,
-    "phone": phone,
-    "address": address,
-    "meta_title": metaTitle,
-    "meta_keywords": metaKeywords,
-    "meta_description": metaDescription,
-  };
+        "appname": appname,
+        "site_url": siteUrl,
+        "offline": offline,
+        "offline_msg": offlineMsg,
+        "restrict_website": restrictWebsite,
+        "allow_registration": allowRegistration,
+        "allow_agent_registration": allowAgentRegistration,
+        "suppliers_registration": suppliersRegistration,
+        "gmap_key": gmapKey,
+        "defaultValue_language": defaultValueLanguage,
+        "multi_currency": multiCurrency,
+        "multi_language": multiLanguage,
+        "currency_code": currencyCode,
+        "copyright": copyright,
+        "email": email,
+        "phone": phone,
+        "address": address,
+        "meta_title": metaTitle,
+        "meta_keywords": metaKeywords,
+        "meta_description": metaDescription,
+      };
 }
 
 class Cms {
@@ -178,14 +198,16 @@ class Cms {
   List<Footer>? footer;
 
   factory Cms.fromJson(Map<String, dynamic> json) => Cms(
-    header: List<Header>.from(json["header"].map((x) => Header.fromJson(x))),
-    footer: List<Footer>.from(json["footer"].map((x) => Footer.fromJson(x))),
-  );
+        header:
+            List<Header>.from(json["header"].map((x) => Header.fromJson(x))),
+        footer:
+            List<Footer>.from(json["footer"].map((x) => Footer.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "header": List<dynamic>.from(header!.map((x) => x.toJson())),
-    "footer": List<dynamic>.from(footer!.map((x) => x.toJson())),
-  };
+        "header": List<dynamic>.from(header!.map((x) => x.toJson())),
+        "footer": List<dynamic>.from(footer!.map((x) => x.toJson())),
+      };
 }
 
 class Footer {
@@ -200,16 +222,31 @@ class Footer {
   List<Company>? services;
 
   factory Footer.fromJson(Map<String, dynamic> json) => Footer(
-    company: json["Company"] == null ? null : List<Company>.from(json["Company"].map((x) => Company.fromJson(x))),
-    support: json["Support"] == null ? null : List<Company>.from(json["Support"].map((x) => Company.fromJson(x))),
-    services: json["Services"] == null ? null : List<Company>.from(json["Services"].map((x) => Company.fromJson(x))),
-  );
+        company: json["Company"] == null
+            ? null
+            : List<Company>.from(
+                json["Company"].map((x) => Company.fromJson(x))),
+        support: json["Support"] == null
+            ? null
+            : List<Company>.from(
+                json["Support"].map((x) => Company.fromJson(x))),
+        services: json["Services"] == null
+            ? null
+            : List<Company>.from(
+                json["Services"].map((x) => Company.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "Company": company == null ? null : List<dynamic>.from(company!.map((x) => x.toJson())),
-    "Support": support == null ? null : List<dynamic>.from(support!.map((x) => x.toJson())),
-    "Services": services == null ? null : List<dynamic>.from(services!.map((x) => x.toJson())),
-  };
+        "Company": company == null
+            ? null
+            : List<dynamic>.from(company!.map((x) => x.toJson())),
+        "Support": support == null
+            ? null
+            : List<dynamic>.from(support!.map((x) => x.toJson())),
+        "Services": services == null
+            ? null
+            : List<dynamic>.from(services!.map((x) => x.toJson())),
+      };
 }
 
 class Company {
@@ -224,16 +261,16 @@ class Company {
   String? title;
 
   factory Company.fromJson(Map<String, dynamic> json) => Company(
-    href: json["href"],
-    target: json["target"],
-    title: json["title"],
-  );
+        href: json["href"],
+        target: json["target"],
+        title: json["title"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "href": href,
-    "target": target,
-    "title": title,
-  };
+        "href": href,
+        "target": target,
+        "title": title,
+      };
 }
 
 class Header {
@@ -244,12 +281,13 @@ class Header {
   List<Company>? company;
 
   factory Header.fromJson(Map<String, dynamic> json) => Header(
-    company: List<Company>.from(json["Company"].map((x) => Company.fromJson(x))),
-  );
+        company:
+            List<Company>.from(json["Company"].map((x) => Company.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "Company": List<dynamic>.from(company!.map((x) => x.toJson())),
-  };
+        "Company": List<dynamic>.from(company!.map((x) => x.toJson())),
+      };
 }
 
 class Currency {
@@ -278,37 +316,35 @@ class Currency {
   bool? status;
 
   factory Currency.fromJson(Map<String, dynamic> json) => Currency(
-    id: json["id"],
-    name: json["name"],
-    symbol: json["symbol"] == null ? null : json["symbol"],
-    code: json["code"],
-    rate: json["rate"],
-    decimals: json["decimals"],
-    symbolPlacement: symbolPlacementValues.map![json["symbol_placement"]],
-    primaryOrder: json["primary_order"],
-    currencyDefault: json["defaultValue"],
-    status: json["status"],
-  );
+        id: json["id"],
+        name: json["name"],
+        symbol: json["symbol"] == null ? null : json["symbol"],
+        code: json["code"],
+        rate: json["rate"],
+        decimals: json["decimals"],
+        symbolPlacement: symbolPlacementValues.map![json["symbol_placement"]],
+        primaryOrder: json["primary_order"],
+        currencyDefault: json["defaultValue"],
+        status: json["status"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "symbol": symbol == null ? null : symbol,
-    "code": code,
-    "rate": rate,
-    "decimals": decimals,
-    "symbol_placement": symbolPlacementValues.reverse[symbolPlacement],
-    "primary_order": primaryOrder,
-    "defaultValue": currencyDefault,
-    "status": status,
-  };
+        "id": id,
+        "name": name,
+        "symbol": symbol == null ? null : symbol,
+        "code": code,
+        "rate": rate,
+        "decimals": decimals,
+        "symbol_placement": symbolPlacementValues.reverse[symbolPlacement],
+        "primary_order": primaryOrder,
+        "defaultValue": currencyDefault,
+        "status": status,
+      };
 }
 
 enum SymbolPlacement { BEFORE }
 
-final symbolPlacementValues = EnumValues({
-  "before": SymbolPlacement.BEFORE
-});
+final symbolPlacementValues = EnumValues({"before": SymbolPlacement.BEFORE});
 
 class Extra {
   Extra({
@@ -320,14 +356,14 @@ class Extra {
   bool? status;
 
   factory Extra.fromJson(Map<String, dynamic> json) => Extra(
-    title: json["title"],
-    status: json["status"],
-  );
+        title: json["title"],
+        status: json["status"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "status": status,
-  };
+        "title": title,
+        "status": status,
+      };
 }
 
 class FeaturedBlog {
@@ -348,22 +384,22 @@ class FeaturedBlog {
   String? slug;
 
   factory FeaturedBlog.fromJson(Map<String, dynamic> json) => FeaturedBlog(
-    id: json["id"],
-    title: json["title"],
-    thumbnail: json["thumbnail"],
-    desc: json["desc"],
-    shortDesc: json["shortDesc"],
-    slug: json["slug"],
-  );
+        id: json["id"],
+        title: json["title"],
+        thumbnail: json["thumbnail"],
+        desc: json["desc"],
+        shortDesc: json["shortDesc"],
+        slug: json["slug"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "thumbnail": thumbnail,
-    "desc": desc,
-    "shortDesc": shortDesc,
-    "slug": slug,
-  };
+        "id": id,
+        "title": title,
+        "thumbnail": thumbnail,
+        "desc": desc,
+        "shortDesc": shortDesc,
+        "slug": slug,
+      };
 }
 
 class FeaturedCar {
@@ -412,50 +448,50 @@ class FeaturedCar {
   AvgReviews? avgReviews;
 
   factory FeaturedCar.fromJson(Map<String, dynamic> json) => FeaturedCar(
-    id: json["id"],
-    title: json["title"],
-    slug: json["slug"],
-    thumbnail: json["thumbnail"],
-    stars: json["stars"],
-    starsCount: json["starsCount"],
-    location: json["location"],
-    desc: json["desc"],
-    doors: json["doors"],
-    passengers: json["passengers"],
-    transmission: json["transmission"],
-    airportPickup: json["airportPickup"],
-    baggage: json["baggage"],
-    price: json["price"],
-    currCode: currCodeValues.map![json["currCode"]],
-    carType: json["carType"],
-    discount: json["discount"],
-    latitude: json["latitude"],
-    longitude: json["longitude"],
-    avgReviews: AvgReviews.fromJson(json["avgReviews"]),
-  );
+        id: json["id"],
+        title: json["title"],
+        slug: json["slug"],
+        thumbnail: json["thumbnail"],
+        stars: json["stars"],
+        starsCount: json["starsCount"],
+        location: json["location"],
+        desc: json["desc"],
+        doors: json["doors"],
+        passengers: json["passengers"],
+        transmission: json["transmission"],
+        airportPickup: json["airportPickup"],
+        baggage: json["baggage"],
+        price: json["price"],
+        currCode: currCodeValues.map![json["currCode"]],
+        carType: json["carType"],
+        discount: json["discount"],
+        latitude: json["latitude"],
+        longitude: json["longitude"],
+        avgReviews: AvgReviews.fromJson(json["avgReviews"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "slug": slug,
-    "thumbnail": thumbnail,
-    "stars": stars,
-    "starsCount": starsCount,
-    "location": location,
-    "desc": desc,
-    "doors": doors,
-    "passengers": passengers,
-    "transmission": transmission,
-    "airportPickup": airportPickup,
-    "baggage": baggage,
-    "price": price,
-    "currCode": currCodeValues.reverse[currCode],
-    "carType": carType,
-    "discount": discount,
-    "latitude": latitude,
-    "longitude": longitude,
-    "avgReviews": avgReviews?.toJson(),
-  };
+        "id": id,
+        "title": title,
+        "slug": slug,
+        "thumbnail": thumbnail,
+        "stars": stars,
+        "starsCount": starsCount,
+        "location": location,
+        "desc": desc,
+        "doors": doors,
+        "passengers": passengers,
+        "transmission": transmission,
+        "airportPickup": airportPickup,
+        "baggage": baggage,
+        "price": price,
+        "currCode": currCodeValues.reverse[currCode],
+        "carType": carType,
+        "discount": discount,
+        "latitude": latitude,
+        "longitude": longitude,
+        "avgReviews": avgReviews?.toJson(),
+      };
 }
 
 class AvgReviews {
@@ -478,31 +514,29 @@ class AvgReviews {
   double? overall;
 
   factory AvgReviews.fromJson(Map<String, dynamic> json) => AvgReviews(
-    clean: json["clean"].toDouble(),
-    comfort: json["comfort"].toDouble(),
-    location: json["location"].toDouble(),
-    facilities: json["facilities"].toDouble(),
-    staff: json["staff"].toDouble(),
-    totalReviews: json["totalReviews"],
-    overall: json["overall"].toDouble(),
-  );
+        clean: json["clean"].toDouble(),
+        comfort: json["comfort"].toDouble(),
+        location: json["location"].toDouble(),
+        facilities: json["facilities"].toDouble(),
+        staff: json["staff"].toDouble(),
+        totalReviews: json["totalReviews"].toString(),
+        overall: json["overall"].toDouble(),
+      );
 
   Map<String, dynamic> toJson() => {
-    "clean": clean,
-    "comfort": comfort,
-    "location": location,
-    "facilities": facilities,
-    "staff": staff,
-    "totalReviews": totalReviews,
-    "overall": overall,
-  };
+        "clean": clean,
+        "comfort": comfort,
+        "location": location,
+        "facilities": facilities,
+        "staff": staff,
+        "totalReviews": totalReviews,
+        "overall": overall,
+      };
 }
 
 enum CurrCode { USD }
 
-final currCodeValues = EnumValues({
-  "usd": CurrCode.USD
-});
+final currCodeValues = EnumValues({"usd": CurrCode.USD});
 
 class FeaturedFlight {
   FeaturedFlight({
@@ -526,26 +560,26 @@ class FeaturedFlight {
   CurrCode? currCode;
 
   factory FeaturedFlight.fromJson(Map<String, dynamic> json) => FeaturedFlight(
-    id: json["id"],
-    title: json["title"],
-    from: json["from"],
-    to: json["to"],
-    thumbnail: json["thumbnail"],
-    desc: json["desc"],
-    price: json["price"],
-    currCode: currCodeValues.map![json["currCode"]],
-  );
+        id: json["id"],
+        title: json["title"],
+        from: json["from"],
+        to: json["to"],
+        thumbnail: json["thumbnail"],
+        desc: json["desc"],
+        price: json["price"],
+        currCode: currCodeValues.map![json["currCode"]],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "from": from,
-    "to": to,
-    "thumbnail": thumbnail,
-    "desc": desc,
-    "price": price,
-    "currCode": currCodeValues.reverse[currCode],
-  };
+        "id": id,
+        "title": title,
+        "from": from,
+        "to": to,
+        "thumbnail": thumbnail,
+        "desc": desc,
+        "price": price,
+        "currCode": currCodeValues.reverse[currCode],
+      };
 }
 
 class Featured {
@@ -594,50 +628,55 @@ class Featured {
   String? tourType;
 
   factory Featured.fromJson(Map<String, dynamic> json) => Featured(
-    id: json["id"],
-    title: json["title"],
-    slug: json["slug"],
-    thumbnail: json["thumbnail"],
-    stars: json["stars"],
-    starsCount: json["starsCount"],
-    location: json["location"],
-    desc: json["desc"],
-    amenities: json["amenities"] == null ? null : List<Amenity>.from(json["amenities"].map((x) => Amenity.fromJson(x))),
-    avgReviews: AvgReviews.fromJson(json["avgReviews"]),
-    latitude: json["latitude"],
-    longitude: json["longitude"],
-    discount: json["discount"],
-    address: json["address"] == null ? null : json["address"],
-    price: json["price"],
-    currCode: currCodeValues.map![json["currCode"]],
-    inclusions: json["inclusions"],
-    tourDays: json["tourDays"] == null ? null : json["tourDays"],
-    tourNights: json["tourNights"] == null ? null : json["tourNights"],
-    tourType: json["tourType"] == null ? null : json["tourType"],
-  );
+        id: json["id"],
+        title: json["title"],
+        slug: json["slug"],
+        thumbnail: json["thumbnail"],
+        stars: json["stars"],
+        starsCount: json["starsCount"],
+        location: json["location"],
+        desc: json["desc"],
+        amenities: json["amenities"] == null
+            ? null
+            : List<Amenity>.from(
+                json["amenities"].map((x) => Amenity.fromJson(x))),
+        avgReviews: AvgReviews.fromJson(json["avgReviews"]),
+        latitude: json["latitude"],
+        longitude: json["longitude"],
+        discount: json["discount"],
+        address: json["address"] == null ? null : json["address"],
+        price: json["price"],
+        currCode: currCodeValues.map![json["currCode"]],
+        inclusions: json["inclusions"],
+        tourDays: json["tourDays"] == null ? null : json["tourDays"],
+        tourNights: json["tourNights"] == null ? null : json["tourNights"],
+        tourType: json["tourType"] == null ? null : json["tourType"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "title": title,
-    "slug": slug,
-    "thumbnail": thumbnail,
-    "stars": stars,
-    "starsCount": starsCount,
-    "location": location,
-    "desc": desc,
-    "amenities": amenities == null ? null : List<dynamic>.from(amenities!.map((x) => x.toJson())),
-    "avgReviews": avgReviews!.toJson(),
-    "latitude": latitude,
-    "longitude": longitude,
-    "discount": discount,
-    "address": address == null ? null : address,
-    "price": price,
-    "currCode": currCodeValues.reverse[currCode],
-    "inclusions": inclusions,
-    "tourDays": tourDays == null ? null : tourDays,
-    "tourNights": tourNights == null ? null : tourNights,
-    "tourType": tourType == null ? null : tourType,
-  };
+        "id": id,
+        "title": title,
+        "slug": slug,
+        "thumbnail": thumbnail,
+        "stars": stars,
+        "starsCount": starsCount,
+        "location": location,
+        "desc": desc,
+        "amenities": amenities == null
+            ? null
+            : List<dynamic>.from(amenities!.map((x) => x.toJson())),
+        "avgReviews": avgReviews!.toJson(),
+        "latitude": latitude,
+        "longitude": longitude,
+        "discount": discount,
+        "address": address == null ? null : address,
+        "price": price,
+        "currCode": currCodeValues.reverse[currCode],
+        "inclusions": inclusions,
+        "tourDays": tourDays == null ? null : tourDays,
+        "tourNights": tourNights == null ? null : tourNights,
+        "tourType": tourType == null ? null : tourType,
+      };
 }
 
 class Amenity {
@@ -650,14 +689,14 @@ class Amenity {
   String? name;
 
   factory Amenity.fromJson(Map<String, dynamic> json) => Amenity(
-    icon: json["icon"],
-    name: json["name"],
-  );
+        icon: json["icon"],
+        name: json["name"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "icon": icon,
-    "name": name,
-  };
+        "icon": icon,
+        "name": name,
+      };
 }
 
 class Language {
@@ -676,20 +715,20 @@ class Language {
   bool? languageDefault;
 
   factory Language.fromJson(Map<String, dynamic> json) => Language(
-    id: json["id"],
-    name: json["name"],
-    rtl: json["rtl"],
-    country: json["country"],
-    languageDefault: json["defaultValue"],
-  );
+        id: json["id"],
+        name: json["name"],
+        rtl: json["rtl"],
+        country: json["country"],
+        languageDefault: json["defaultValue"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "rtl": rtl,
-    "country": country,
-    "defaultValue": languageDefault,
-  };
+        "id": id,
+        "name": name,
+        "rtl": rtl,
+        "country": country,
+        "defaultValue": languageDefault,
+      };
 }
 
 class Module {
@@ -704,16 +743,16 @@ class Module {
   String? order;
 
   factory Module.fromJson(Map<String, dynamic> json) => Module(
-    name: json["name"],
-    status: json["status??"],
-    order: json["order"],
-  );
+        name: json["name"],
+        status: json["status??"],
+        order: json["order"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "name": name,
-    "status": status,
-    "order": order,
-  };
+        "name": name,
+        "status": status,
+        "order": order,
+      };
 }
 
 class PaymentGateway {
@@ -742,30 +781,30 @@ class PaymentGateway {
   String? order;
 
   factory PaymentGateway.fromJson(Map<String, dynamic> json) => PaymentGateway(
-    title: json["title"],
-    c1: json["c1"] == null ? null : json["c1"],
-    c2: json["c2"] == null ? null : json["c2"],
-    c3: json["c3"] == null ? null : json["c3"],
-    c4: json["c4"] == null ? null : json["c4"],
-    c5: json["c5"] == null ? null : json["c5"],
-    dev: json["dev"],
-    devEndpoint: json["dev_endpoint"] == null ? null : json["dev_endpoint"],
-    proEndpoint: json["pro_endpoint"] == null ? null : json["pro_endpoint"],
-    order: json["order"],
-  );
+        title: json["title"],
+        c1: json["c1"] == null ? null : json["c1"],
+        c2: json["c2"] == null ? null : json["c2"],
+        c3: json["c3"] == null ? null : json["c3"],
+        c4: json["c4"] == null ? null : json["c4"],
+        c5: json["c5"] == null ? null : json["c5"],
+        dev: json["dev"],
+        devEndpoint: json["dev_endpoint"] == null ? null : json["dev_endpoint"],
+        proEndpoint: json["pro_endpoint"] == null ? null : json["pro_endpoint"],
+        order: json["order"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "c1": c1 == null ? null : c1,
-    "c2": c2 == null ? null : c2,
-    "c3": c3 == null ? null : c3,
-    "c4": c4 == null ? null : c4,
-    "c5": c5 == null ? null : c5,
-    "dev": dev,
-    "dev_endpoint": devEndpoint == null ? null : devEndpoint,
-    "pro_endpoint": proEndpoint == null ? null : proEndpoint,
-    "order": order,
-  };
+        "title": title,
+        "c1": c1 == null ? null : c1,
+        "c2": c2 == null ? null : c2,
+        "c3": c3 == null ? null : c3,
+        "c4": c4 == null ? null : c4,
+        "c5": c5 == null ? null : c5,
+        "dev": dev,
+        "dev_endpoint": devEndpoint == null ? null : devEndpoint,
+        "pro_endpoint": proEndpoint == null ? null : proEndpoint,
+        "order": order,
+      };
 }
 
 class Slider {
@@ -794,30 +833,30 @@ class Slider {
   String? slideOrder;
 
   factory Slider.fromJson(Map<String, dynamic> json) => Slider(
-    slideId: json["slide_id"],
-    slidePosition: json["slide_position"],
-    slideTitleText: json["slide_title_text"],
-    slideDescText: json["slide_desc_text"],
-    slideOptionalText: json["slide_optional_text"],
-    slideLink: json["slide_link"],
-    slideLinkName: json["slide_link_name"],
-    slideImage: json["slide_image"],
-    slideStatus: json["slide_status"],
-    slideOrder: json["slide_order"],
-  );
+        slideId: json["slide_id"],
+        slidePosition: json["slide_position"],
+        slideTitleText: json["slide_title_text"],
+        slideDescText: json["slide_desc_text"],
+        slideOptionalText: json["slide_optional_text"],
+        slideLink: json["slide_link"],
+        slideLinkName: json["slide_link_name"],
+        slideImage: json["slide_image"],
+        slideStatus: json["slide_status"],
+        slideOrder: json["slide_order"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "slide_id": slideId,
-    "slide_position": slidePosition,
-    "slide_title_text": slideTitleText,
-    "slide_desc_text": slideDescText,
-    "slide_optional_text": slideOptionalText,
-    "slide_link": slideLink,
-    "slide_link_name": slideLinkName,
-    "slide_image": slideImage,
-    "slide_status": slideStatus,
-    "slide_order": slideOrder,
-  };
+        "slide_id": slideId,
+        "slide_position": slidePosition,
+        "slide_title_text": slideTitleText,
+        "slide_desc_text": slideDescText,
+        "slide_optional_text": slideOptionalText,
+        "slide_link": slideLink,
+        "slide_link_name": slideLinkName,
+        "slide_image": slideImage,
+        "slide_status": slideStatus,
+        "slide_order": slideOrder,
+      };
 }
 
 class Social {
@@ -840,24 +879,24 @@ class Social {
   String? socialIcon;
 
   factory Social.fromJson(Map<String, dynamic> json) => Social(
-    socialId: json["social_id"],
-    socialName: json["social_name"],
-    socialLink: json["social_link"],
-    socialPosition: json["social_position"],
-    socialOrder: json["social_order"],
-    status: json["status"],
-    socialIcon: json["social_icon"],
-  );
+        socialId: json["social_id"],
+        socialName: json["social_name"],
+        socialLink: json["social_link"],
+        socialPosition: json["social_position"],
+        socialOrder: json["social_order"],
+        status: json["status"],
+        socialIcon: json["social_icon"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "social_id": socialId,
-    "social_name": socialName,
-    "social_link": socialLink,
-    "social_position": socialPosition,
-    "social_order": socialOrder,
-    "status": status,
-    "social_icon": socialIcon,
-  };
+        "social_id": socialId,
+        "social_name": socialName,
+        "social_link": socialLink,
+        "social_position": socialPosition,
+        "social_order": socialOrder,
+        "status": status,
+        "social_icon": socialIcon,
+      };
 }
 
 class EnumValues<T> {
@@ -873,4 +912,3 @@ class EnumValues<T> {
     return reverseMap!;
   }
 }
-

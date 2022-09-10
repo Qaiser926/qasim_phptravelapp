@@ -76,11 +76,11 @@ class _FeatureTourDataState extends State<FeatureTourData> {
                                   width: Get.size.width,
                                   height: Get.size.height * 0.395,
                                   child: Image.network(
-                                    item![index %
-                                            controller.modal.value
-                                                .featuredTours!.length]
-                                        .thumbnail
-                                        .toString(),
+                                    item?[index %
+                                                controller.modal.value
+                                                    .featuredTours!.length]
+                                            .thumbnail ??
+                                        "thumbnail",
                                     fit: BoxFit.cover,
                                   ),
                                 ),
@@ -127,16 +127,15 @@ class _FeatureTourDataState extends State<FeatureTourData> {
                                               alignment: Alignment.bottomLeft,
                                               child: RatingBarIndicator(
                                                 // rating: 3.3,
-                                                rating: double.parse(item[
-                                                        index %
+                                                rating: double.parse(item?[index %
                                                             controller
                                                                 .modal
                                                                 .value
                                                                 .featuredTours!
                                                                 .length]
-                                                    .avgReviews!
-                                                    .totalReviews
-                                                    .toString()),
+                                                        .avgReviews!
+                                                        .totalReviews ??
+                                                    "total review"),
                                                 itemBuilder: (context, index) =>
                                                     Icon(Icons.star,
                                                         color: Colors.white),

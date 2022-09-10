@@ -6,6 +6,8 @@ import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/flightPage/flightView/flightDetailPages/flightDetailPage.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/homePageModelClass.dart';
 import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
+import 'package:phptravelapp/routes/app_pages/app_pages.dart';
+import 'package:phptravelapp/routes/app_routes/app_route.dart';
 
 import '../api_servies/api_provider.dart';
 
@@ -103,7 +105,12 @@ class _FeatureFlightState extends State<FeatureFlight> {
 
                       return InkWell(
                         onTap: () {
-                          // Get.to(FlightDetailPage());
+                          Get.to(
+                            FlightDetailPage(
+                              from: item![index].from,
+                              to: item[index].to,
+                            ),
+                          );
                           print('the index is : ${index}');
                         },
                         child: Row(
@@ -218,7 +225,20 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                               color: Colors.black,
                                               fontSize: 16.5)),
                                       TextSpan(text: '  '),
-                                      // TextSpan(text: item[index%controller.modal.value.featuredFlights!.length].price??"",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.5,color: Colors.black)),
+                                      TextSpan(
+                                          text: item?[index %
+                                                      controller
+                                                          .modal
+                                                          .value
+                                                          .featuredFlights!
+                                                          .length]
+                                                  .price
+                                                  .toString() ??
+                                              'not show',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16.5,
+                                              color: Colors.black)),
                                     ]))
                                   ],
                                 ),

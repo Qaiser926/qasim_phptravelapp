@@ -30,7 +30,6 @@
 //   }
 // }
 
-
 // import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/container.dart';
 // import 'package:flutter/src/widgets/framework.dart';
@@ -65,7 +64,6 @@
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -90,7 +88,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
 
   int childCount = 0;
   int adultCount = 2;
-  int roomcout=1;
+  int roomcout = 1;
   @override
   void onInit() {
     print(argumentData[1]);
@@ -100,8 +98,8 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
 
   final selectedValue = null;
 
-  List listitem = ['paksitan','india','china','landon','us','canada'];
-  var valueChose='paksitan';
+  List listitem = ['paksitan', 'india', 'china', 'landon', 'us', 'canada'];
+  var valueChose = 'paksitan';
 
   final homecontroler = Get.put(TourController());
 
@@ -117,7 +115,6 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
         child: Container(
           child: Column(
             children: [
-
               Align(
                   alignment: Alignment.topLeft,
                   child: commonText(title: 'From Country'.tr, size: 16)),
@@ -154,23 +151,26 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
       ),
     );
   }
-  Widget dropDownButton(){
-    return   Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 10),
+
+  Widget dropDownButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       child: Container(
         width: double.infinity,
-        height: Get.size.height*0.075,
+        height: Get.size.height * 0.075,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
-            border: Border.all(width: 1,color: Colors.grey)
-          // color: TColor.mainColor,
-        ),
+            border: Border.all(width: 1, color: Colors.grey)
+            // color: TColor.mainColor,
+            ),
         child: Center(
           child: DropdownButtonFormField(
-
               decoration: InputDecoration(
                 border: InputBorder.none,
-                prefixIcon: Icon(Icons.outlined_flag_outlined,color: Colors.grey,),
+                prefixIcon: Icon(
+                  Icons.outlined_flag_outlined,
+                  color: Colors.grey,
+                ),
               ),
               icon: Padding(
                 padding: const EdgeInsets.only(right: 6),
@@ -188,18 +188,18 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
                 return DropdownMenuItem(
                   child: Text(e),
                   value: e,
-
                 );
               }).toList(),
-              onChanged: (String? value){
-                setState((){
-                  valueChose=value!;
+              onChanged: (String? value) {
+                setState(() {
+                  valueChose = value!;
                 });
               }),
         ),
       ),
     );
   }
+
   Widget showTravellerRemoveAddVisisbiltyContainer() {
     return Visibility(
       visible: isVisible,
@@ -225,101 +225,112 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-
-              visibilityContainerRow('Adults'.tr,  () {
-                setState(() {
-                  adultCount++;
-                });
-              },'${adultCount}', () {
-                setState(() {
-                  adultCount--;
-                });
-              },Icons.person_outline_outlined),
-              visibilityContainerRow('Childs'.tr,  () {
-                setState(() {
-                  childCount++;
-                });
-              },'${childCount}', () {
-                setState(() {
-                  childCount--;
-
-                });
-              },Icons.woman),
-
-
+              visibilityContainerRow(
+                  'Adults'.tr,
+                  () {
+                    setState(() {
+                      adultCount++;
+                    });
+                  },
+                  '${adultCount}',
+                  () {
+                    setState(() {
+                      adultCount--;
+                    });
+                  },
+                  Icons.person_outline_outlined),
+              visibilityContainerRow(
+                  'Childs'.tr,
+                  () {
+                    setState(() {
+                      childCount++;
+                    });
+                  },
+                  '${childCount}',
+                  () {
+                    setState(() {
+                      childCount--;
+                    });
+                  },
+                  Icons.woman),
             ],
           ),
         ),
       ),
     );
   }
-  Widget visibilityContainerRow(String title,Function() plusCount,String hint,Function() minusCount,IconData visibleContainerIcon){
-    return  Row(
+
+  Widget visibilityContainerRow(String title, Function() plusCount, String hint,
+      Function() minusCount, IconData visibleContainerIcon) {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-            child:  Row(
-              children: [
-                Icon(visibleContainerIcon,color: Colors.grey,),
-                SizedBox(width: 5,),
-
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
-            )),
+            child: Row(
+          children: [
+            Icon(
+              visibleContainerIcon,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              title,
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        )),
         Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 13),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.08,
-                  height: Get.size.height * 0.07,
-                  child: InkWell(
-                      onTap: minusCount,
-                      child: Icon(Icons.minimize)),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 13),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: TColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.08,
+              height: Get.size.height * 0.07,
+              child: InkWell(onTap: minusCount, child: Icon(Icons.minimize)),
+            ),
+            // Container(
+            //     width: 35,
+            //     height: 25,
+            //     child: TextField(
+            //       decoration: InputDecoration(
+            //           hintText: '$adultCount',
+            //           border: InputBorder.none),
+            //     )),
+            Text(hint),
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: TColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.08,
+              height: Get.size.height * 0.07,
+              child: IconButton(
+                onPressed: plusCount,
+                splashColor: Colors.transparent,
+                icon: const Padding(
+                  padding: const EdgeInsets.only(right: 27),
+                  child: Icon(Icons.add),
                 ),
-                // Container(
-                //     width: 35,
-                //     height: 25,
-                //     child: TextField(
-                //       decoration: InputDecoration(
-                //           hintText: '$adultCount',
-                //           border: InputBorder.none),
-                //     )),
-                Text(hint),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.08,
-                  height: Get.size.height * 0.07,
-                  child: IconButton(
-                    onPressed: plusCount,
-                    splashColor: Colors.transparent,
-                    icon: const Padding(
-                      padding: const EdgeInsets.only(right: 27),
-                      child: Icon(Icons.add),
-                    ),
-                  ),
-                )
-              ],
-            )),
+              ),
+            )
+          ],
+        )),
       ],
     );
   }
+
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-        // color: TColor.mainColor,
+          // color: TColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -344,6 +355,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
       ),
     );
   }
+
   Widget SearchButton() {
     return MaterialButton(
       height: Get.size.height * 0.06,
@@ -362,7 +374,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
     );
   }
 
-  Widget travellerDropdownContainer( String hint, IconData icon) {
+  Widget travellerDropdownContainer(String hint, IconData icon) {
     return Container(
       width: Get.size.width,
       height: Get.size.height * 0.07,
