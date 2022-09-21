@@ -284,7 +284,7 @@ class _FeatureTourDataState extends State<FeatureTourData> {
                 height: Get.size.height * 0.12,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.9)),
+                    color: PColor.mainColor.withOpacity(0.9)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconButton(
@@ -299,7 +299,7 @@ class _FeatureTourDataState extends State<FeatureTourData> {
                 height: Get.size.height * 0.12,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.9)),
+                    color: PColor.mainColor.withOpacity(0.9)),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: IconButton(
@@ -327,7 +327,7 @@ class _FeatureTourDataState extends State<FeatureTourData> {
                 color:
                     isSelected ? Colors.grey : Colors.grey.withOpacity(0.35)),
             color:
-                isSelected ? Colors.black : TColor.mainColor.withOpacity(0.1)),
+                isSelected ? Colors.black : PColor.mainColor.withOpacity(0.1)),
       ),
     );
   }

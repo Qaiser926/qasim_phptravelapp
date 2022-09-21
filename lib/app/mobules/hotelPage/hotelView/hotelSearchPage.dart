@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/hotelPage/hotelController/hotelController.dart';
 import 'package:phptravelapp/app/mobules/hotelPage/hotelView/hotelSearchPage/hotelSearchPage.dart';
-import 'package:phptravelapp/app/reusableText/reusableText.dart';
+import 'package:phptravelapp/app/reusableText/commonText.dart';
 
 class HotelSearchPage extends StatefulWidget {
   const HotelSearchPage({super.key});
@@ -22,9 +22,9 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
 
   int childCount = 0;
   int adultCount = 2;
-  int roomcout=1;
-  String Travellers='Travellers'.tr;
-  String Rooms='Rooms'.tr;
+  int roomcout = 1;
+  String Travellers = 'Travellers'.tr;
+  String Rooms = 'Rooms'.tr;
   @override
   void onInit() {
     print(argumentData[1]);
@@ -34,8 +34,8 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
 
   final selectedValue = null;
 
-  List listitem = ['paksitan','india','china','landon','us','canada'];
-  var valueChose='paksitan';
+  List listitem = ['paksitan', 'india', 'china', 'landon', 'us', 'canada'];
+  var valueChose = 'paksitan';
 
   final homecontroler = Get.put(HotelController());
 
@@ -99,18 +99,16 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
                         },
                         child: isVisible
                             ? travellerDropdownContainer(
-
                                 '$Travellers ${adultCount + childCount} $Rooms ${roomcout}',
                                 Icons.directions_walk)
                             : travellerDropdownContainer(
-
                                 '$Travellers ${adultCount + childCount} $Rooms ${roomcout}',
                                 Icons.directions_walk)),
                     Stack(
                       children: [
                         Container(
-                    margin: EdgeInsets.only(top: 40),
-                        child: SearchButton()),
+                            margin: EdgeInsets.only(top: 40),
+                            child: SearchButton()),
                         showTravellerRemoveAddVisisbiltyContainer(),
                       ],
                     )
@@ -149,41 +147,61 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             children: [
-             visibilityContainerRow('Rooms'.tr,  () {
-               setState(() {
-                 roomcout++;
-               });
-             },'${roomcout}', () {
-               setState(() {
-                 roomcout<=0?roomcout=0:roomcout--;
-                 // roomcout--;
-               });
-             },Icons.bedroom_child_sharp),
-              visibilityContainerRow('Adults'.tr,  () {
-                setState(() {
-                  adultCount++;
-                });
-              },'${adultCount}', () {
-                setState(() {
-                adultCount<=0?adultCount=0:  adultCount--;
-                });
-              },Icons.person_outline_outlined),
-              visibilityContainerRow('Childs'.tr,  () {
-                setState(() {
-                  childCount++;
-                });
-              },'${childCount}', () {
-                setState(() {
-                 childCount<=0?childCount=0: childCount--;
+              visibilityContainerRow(
+                  'Rooms'.tr,
+                  () {
+                    setState(() {
+                      roomcout++;
+                    });
+                  },
+                  '${roomcout}',
+                  () {
+                    setState(() {
+                      roomcout <= 0 ? roomcout = 0 : roomcout--;
+                      // roomcout--;
+                    });
+                  },
+                  Icons.bedroom_child_sharp),
+              visibilityContainerRow(
+                  'Adults'.tr,
+                  () {
+                    setState(() {
+                      adultCount++;
+                    });
+                  },
+                  '${adultCount}',
+                  () {
+                    setState(() {
+                      adultCount <= 0 ? adultCount = 0 : adultCount--;
+                    });
+                  },
+                  Icons.person_outline_outlined),
+              visibilityContainerRow(
+                  'Childs'.tr,
+                  () {
+                    setState(() {
+                      childCount++;
+                    });
+                  },
+                  '${childCount}',
+                  () {
+                    setState(() {
+                      childCount <= 0 ? childCount = 0 : childCount--;
+                    });
+                  },
+                  Icons.woman),
 
-                });
-              },Icons.woman),
-
-              SizedBox(height: 4,),
+              SizedBox(
+                height: 4,
+              ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: commonText(title: 'nationality'.tr,fontWeight: FontWeight.bold,size: 18,)),
-            // dropdownButton
+                  child: commonText(
+                    title: 'nationality'.tr,
+                    fontWeight: FontWeight.bold,
+                    size: 18,
+                  )),
+              // dropdownButton
               dropDownButton(),
             ],
           ),
@@ -191,28 +209,31 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
       ),
     );
   }
-  Widget dropDownButton(){
-    return   Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 10),
+
+  Widget dropDownButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       child: Container(
         width: double.infinity,
-        height: Get.size.height*0.074,
+        height: Get.size.height * 0.074,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
-          color: TColor.mainColor,
+          color: PColor.mainColor,
         ),
         child: Center(
           child: DropdownButtonFormField(
-
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.wordpress_rounded,color: Colors.grey,),
+                  child: Icon(
+                    Icons.wordpress_rounded,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
               icon: Padding(
-                padding: const EdgeInsets.only(right: 6,bottom: 6),
+                padding: const EdgeInsets.only(right: 6, bottom: 6),
                 child: Icon(
                   Icons.keyboard_arrow_down,
                   color: Colors.grey,
@@ -220,7 +241,7 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
                 ),
               ),
               isExpanded: true,
-              // style: TextStyle(color: TColor.mainblueColor),
+              // style: TextStyle(color: PColor.mainblueColor),
               // underline: SizedBox(),
               // icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
               value: valueChose,
@@ -228,83 +249,94 @@ class _HotelSearchPageState extends State<HotelSearchPage> {
                 return DropdownMenuItem(
                   child: Text(e),
                   value: e,
-
                 );
               }).toList(),
-              onChanged: (String? value){
-                setState((){
-                  valueChose=value!;
+              onChanged: (String? value) {
+                setState(() {
+                  valueChose = value!;
                 });
               }),
         ),
       ),
     );
   }
-Widget visibilityContainerRow(String title,Function() plusCount,String hint,Function() minusCount,IconData visibleContainerIcon){
-    return  Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
+  Widget visibilityContainerRow(String title, Function() plusCount, String hint,
+      Function() minusCount, IconData visibleContainerIcon) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
-            child:  Row(
-              children: [
-                Icon(visibleContainerIcon,color: Colors.grey,),
-                SizedBox(width: 5,),
-
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 15),
-                ),
-              ],
-            )),
+            child: Row(
+          children: [
+            Icon(
+              visibleContainerIcon,
+              color: Colors.grey,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              title,
+              style: TextStyle(fontSize: 15),
+            ),
+          ],
+        )),
         Container(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
-              children: [
-                Container(
-                  margin: EdgeInsets.only(right: 13),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.084,
-                  height: Get.size.height * 0.084,
-                  child: InkWell(
-                      onTap: minusCount,
-                      child: Center(child: InkWell(
-                          child: PlusMinus(title: '-',size: 30,)))),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 13),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: PColor.mainColor.withOpacity(0.6),
+              ),
+              width: Get.size.width * 0.084,
+              height: Get.size.height * 0.084,
+              child: InkWell(
+                  onTap: minusCount,
+                  child: Center(
+                      child: InkWell(
+                          child: PlusMinus(
+                    title: '-',
+                    size: 30,
+                  )))),
+            ),
+            // Container(
+            //     width: 35,
+            //     height: 25,
+            //     child: TextField(
+            //       decoration: InputDecoration(
+            //           hintText: '$adultCount',
+            //           border: InputBorder.none),
+            //     )),
+            Text(hint),
+            Container(
+                margin: EdgeInsets.only(left: 10),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: PColor.mainColor.withOpacity(0.6),
                 ),
-                // Container(
-                //     width: 35,
-                //     height: 25,
-                //     child: TextField(
-                //       decoration: InputDecoration(
-                //           hintText: '$adultCount',
-                //           border: InputBorder.none),
-                //     )),
-                Text(hint),
-                Container(
-                  margin: EdgeInsets.only(left: 10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: TColor.mainColor.withOpacity(0.6),
-                  ),
-                  width: Get.size.width * 0.084,
-                  height: Get.size.height * 0.084,
-                  child: Center(child: InkWell(
-                      onTap: plusCount,
-                      child: PlusMinus(title: '+',size: 24,)))
-                )
-              ],
-            )),
+                width: Get.size.width * 0.084,
+                height: Get.size.height * 0.084,
+                child: Center(
+                    child: InkWell(
+                        onTap: plusCount,
+                        child: PlusMinus(
+                          title: '+',
+                          size: 24,
+                        ))))
+          ],
+        )),
       ],
     );
-}
+  }
+
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-          // color: TColor.mainColor,
+          // color: PColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -334,7 +366,7 @@ Widget visibilityContainerRow(String title,Function() plusCount,String hint,Func
     return MaterialButton(
       height: Get.size.height * 0.06,
       minWidth: double.infinity,
-      color: TColor.mainblueColor,
+      color: PColor.mainblueColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
       onPressed: () {},
       child: Text(
@@ -348,7 +380,7 @@ Widget visibilityContainerRow(String title,Function() plusCount,String hint,Func
     );
   }
 
-  Widget travellerDropdownContainer( String hint, IconData icon) {
+  Widget travellerDropdownContainer(String hint, IconData icon) {
     return Container(
       width: Get.size.width,
       height: Get.size.height * 0.07,
@@ -401,7 +433,7 @@ class ReusableEditText extends StatelessWidget {
             Icons.location_on_outlined,
             color: Colors.grey,
           ),
-          fillColor: TColor.mainColor,
+          fillColor: PColor.mainColor,
           filled: true,
           border: OutlineInputBorder(),
           hintText: title,

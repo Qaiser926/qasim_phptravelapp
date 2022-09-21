@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/flightPage/flightController/flightController.dart';
 import 'package:phptravelapp/app/mobules/hotelPage/hotelView/hotelSearchPage/hotelSearchPage.dart';
-import 'package:phptravelapp/app/reusableText/reusableText.dart';
+import 'package:phptravelapp/app/reusableText/commonText.dart';
 
 class FlightPage extends StatefulWidget {
   const FlightPage({super.key});
@@ -212,7 +212,7 @@ class _FlightPageState extends State<FlightPage> {
         height: Get.size.height * 0.074,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
-          color: TColor.mainColor,
+          color: PColor.mainColor,
         ),
         child: Center(
           child: DropdownButtonFormField(
@@ -232,7 +232,7 @@ class _FlightPageState extends State<FlightPage> {
                 ),
               ),
               isExpanded: true,
-              // style: TextStyle(color: TColor.mainblueColor),
+              // style: TextStyle(color: PColor.mainblueColor),
               // underline: SizedBox(),
               // icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
               value: valueChose,
@@ -281,7 +281,7 @@ class _FlightPageState extends State<FlightPage> {
               margin: EdgeInsets.only(right: 13),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: TColor.mainColor.withOpacity(0.6),
+                color: PColor.mainColor.withOpacity(0.6),
               ),
               width: Get.size.width * 0.084,
               height: Get.size.height * 0.084,
@@ -306,7 +306,7 @@ class _FlightPageState extends State<FlightPage> {
                 margin: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: TColor.mainColor.withOpacity(0.6),
+                  color: PColor.mainColor.withOpacity(0.6),
                 ),
                 width: Get.size.width * 0.084,
                 height: Get.size.height * 0.084,
@@ -328,7 +328,7 @@ class _FlightPageState extends State<FlightPage> {
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-          // color: TColor.mainColor,
+          // color: PColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -358,7 +358,7 @@ class _FlightPageState extends State<FlightPage> {
     return MaterialButton(
       height: Get.size.height * 0.06,
       minWidth: double.infinity,
-      color: TColor.mainblueColor,
+      color: PColor.mainblueColor,
       // color:Color(0xff1EC38B),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
       onPressed: () {},
@@ -426,7 +426,7 @@ class ReusableEditText extends StatelessWidget {
             Icons.location_on_outlined,
             color: Colors.grey,
           ),
-          fillColor: TColor.mainColor,
+          fillColor: PColor.mainColor,
           filled: true,
           border: OutlineInputBorder(),
           hintText: title,

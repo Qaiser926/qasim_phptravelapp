@@ -1,10 +1,23 @@
+import 'package:dio/dio.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:phptravelapp/app/language_translation_string/languageTranslation.dart';
+import 'package:phptravelapp/app/mobules/authentication/agents/agentsLogin.dart';
+import 'package:phptravelapp/app/mobules/authentication/agents/agentsSignup.dart';
+import 'package:phptravelapp/app/mobules/authentication/customer/customerLogin.dart';
+import 'package:phptravelapp/app/mobules/authentication/customer/customerSignup.dart';
+import 'package:phptravelapp/app/mobules/authentication/supplier/supplierLogin.dart';
+import 'package:phptravelapp/app/mobules/authentication/supplier/supplierSignup.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/homePageModelClass.dart';
 import 'package:phptravelapp/app/mobules/homePage/component/expandedListAnimation.dart';
 import 'package:phptravelapp/app/mobules/homePage/component/myScrollerBar.dart';
+import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
+import 'package:phptravelapp/app/reusableText/dimension.dart';
+import 'package:phptravelapp/app/reusableText/reusable_commonText.dart';
+import 'package:phptravelapp/testingPage/testingmodel.dart';
 
 const double _kScrollbarThickness = 12.0;
 
@@ -94,53 +107,58 @@ class _LanguageChangeState extends State<LanguageChange> {
 
   String? lng;
 
+  HomeController controller = Get.find<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return DropdownButtonHideUnderline(
-      child: DropdownButton2(
-        hint: Text(
-          'English',
-          style: TextStyle(
-            fontSize: 14,
-            color: Theme.of(context).hintColor,
+      child: InkWell(
+        child: DropdownButton2(
+          hint: Text(
+            'English',
+            style: TextStyle(
+              fontSize: 14,
+              color: Theme.of(context).hintColor,
+            ),
           ),
-        ),
-        items: TranslationPage.langs
-            .map((item) => DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: const TextStyle(
-                      fontSize: 14,
+          items: TranslationPage.langs
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Text(
+                      item,
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
-                ))
-            .toList(),
-        value: lng,
-        onChanged: (value) {
-          setState(() {
-            this.lng = value!;
-            TranslationPage().changeLocale(value);
-          });
-        },
-        iconEnabledColor: Colors.black,
-        iconDisabledColor: Colors.grey,
-        buttonHeight: 50,
-        buttonWidth: 160,
-        buttonPadding: const EdgeInsets.only(left: 5, right: 5),
-        // buttonElevation: 2,
-        itemHeight: 40,
-        // itemPadding: const EdgeInsets.only(left: 14, right: 14),
-        // dropdownMaxHeight: Get.size.height*0.3,
-        // dropdownPadding: null,
-        dropdownDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
+                  ))
+              .toList(),
+          value: lng,
+          onChanged: (value) {
+            setState(() {
+              this.lng = value.toString();
+              TranslationPage().changeLocale(value.toString());
+            });
+          },
+
+          iconEnabledColor: Colors.black,
+          iconDisabledColor: Colors.grey,
+          buttonHeight: 50,
+          buttonWidth: 160,
+          buttonPadding: const EdgeInsets.only(left: 5, right: 5),
+          // buttonElevation: 2,
+          itemHeight: 40,
+          // itemPadding: const EdgeInsets.only(left: 14, right: 14),
+          dropdownMaxHeight: Get.size.height * 0.3,
+          // dropdownPadding: null,
+          // dropdownDecoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(4),
+          // ),
+          // dropdownElevation: 8,
+          // scrollbarRadius: const Radius.circular(10),
+          // scrollbarThickness: 6,
+          // scrollbarAlwaysShow: true,
+          // offset: const Offset(0, 0),
         ),
-        // dropdownElevation: 8,
-        // scrollbarRadius: const Radius.circular(10),
-        // scrollbarThickness: 6,
-        // scrollbarAlwaysShow: true,
-        offset: const Offset(0, 0),
       ),
     );
 
@@ -314,7 +332,7 @@ class _DropDownState extends State<DropDownPage> {
           value: _selectedLang,
           onChanged: (value) {
             setState(() {
-              _selectedLang = value!;
+              _selectedLang = value.toString();
               selectedLang = true;
               // TextStyle(color: Colors.black);
               // TextStyle(color:selected?Colors.black:Colors.white);
@@ -702,185 +720,6 @@ class _CurrencyExchangeState extends State<CurrencyExchange> {
   }
 }
 
-class LoginLogoutDropDown extends StatefulWidget {
-  const LoginLogoutDropDown({Key? key}) : super(key: key);
-
-  @override
-  State<LoginLogoutDropDown> createState() => _LoginLogoutDropDownState();
-}
-
-class _LoginLogoutDropDownState extends State<LoginLogoutDropDown> {
-  List authenticationList = [
-    'Customer Login',
-    'Customer Signup',
-    'Agents Login',
-    'Agents Signup',
-    'Supplier Login',
-    'Supplier Signup',
-  ];
-
-  String? selected;
-
-  bool isVisible = false;
-  @override
-  Widget build(BuildContext context) {
-    return
-        /* DropdownButtonHideUnderline(
-            child: DropdownButton2(
-              iconEnabledColor: Colors.black,
-              iconDisabledColor: Colors.grey,
-              buttonHeight: 50,
-              buttonWidth: 160,
-              buttonPadding: const EdgeInsets.only(left: 5, right: 5),
-              buttonElevation: 2,
-              itemHeight: 40,
-              itemPadding: const EdgeInsets.only(left: 14, right: 14),
-              dropdownMaxHeight: Get.size.height*0.3,
-              dropdownPadding: null,
-              dropdownDecoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(7),
-              ),
-              dropdownElevation: 8,
-              scrollbarRadius: const Radius.circular(10),
-              scrollbarThickness: 6,
-              scrollbarAlwaysShow: true,
-              offset: const Offset(0, 0),
-              hint: Text(
-                'Account',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Theme
-                      .of(context)
-                      .hintColor,
-                ),
-              ),
-              items: authenticationList
-                  .map((item) =>
-                  DropdownMenuItem<String>(
-                    onTap: (){
-                      if(item=='Customer Login'){
-                       print('customer logn');
-                     Get.to(CustomerLoginPage());
-                      }
-                      else if(item=='Customer Signup'){
-                        print('customer signup');
-                        Get.to(CustomerLoginPage());
-                      }else if(item=='Agents Login'){
-                        print('Agents Login');
-                      }else if(item=='Agents Signup'){
-                        print('Agents Signup');
-
-                      }else if(item==4){
-                        print('4');
-                      }else if(item==5){
-                        print('5');
-                      }
-                    },
-                    value: item,
-                    child: Text(
-                      item,
-                      style: const TextStyle(
-                        fontSize: 14,
-                      ),
-                    ),
-                  ))
-                  .toList(),
-              value: selected,
-
-              onChanged: (value) {
-                setState(() {
-                  selected = value as String;
-                });
-              },
-
-            ),
-
-   */
-        /*       Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              color: Colors.black,
-            ),
-            width: Get.size.width*0.4,
-            height: Get.size.height*0.054,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Icon(Icons.person_outline_outlined,color: Colors.white,),
-              Text('ACCOUNT',style: TextStyle(fontSize: 19,color: Colors.white,
-              fontWeight: FontWeight.bold),),
-              Icon(Icons.keyboard_arrow_down_sharp,color: Colors.white,)
-            ],
-          ),
-          ),
-        ),
-        Visibility(
-          visible: isVisible,
-          child:Padding(
-            padding: const EdgeInsets.only(top: 4),
-            child: AnimatedContainer(
-              duration: Duration(
-                milliseconds: 100,
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3),
-                  color: Colors.black,
-                ),
-                width: double.infinity,
-                height: Get.size.height*0.434,
-
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: Get.size.height*0.01,),
-                     commonText('Customer Login',() => CustomerLoginPage()),
-                      SizedBox(height: Get.size.height*0.03,),
-                     commonText('Customer Signup',() => CustomerSignupPage()),
-                      SizedBox(height: Get.size.height*0.03,),
-                     Divider(color: Colors.white54),
-                     commonText('Agents Login',() => AgentLoginPage()),
-                      SizedBox(height: Get.size.height*0.03,),
-                     commonText('Agents Signup',()=>AgentSignupPage()),
-                      SizedBox(height: Get.size.height*0.02,),
-                      Divider(color: Colors.white54),
-                     commonText('Supplier Signup',()=>SupplierSignupPage()),
-                      SizedBox(height: Get.size.height*0.03,),
-                     commonText('Supplier Login',()=>SupplierLoginPage()),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        )*/
-        /*
-
-    );
-*/
-        ListView.builder(
-      itemBuilder: (BuildContext context, int index) => DataPopUp(data[index]),
-      itemCount: data.length,
-    );
-  }
-
-  Widget commonText(String title, Function() onpress) {
-    return InkWell(
-      onTap: () {
-        Get.to(onpress);
-      },
-      child: Text(
-        title,
-        style: TextStyle(
-            fontSize: 17, color: Colors.white, fontWeight: FontWeight.w500),
-      ),
-    );
-  }
-}
-
 class ExpandableList extends StatefulWidget {
   const ExpandableList({super.key});
 
@@ -961,5 +800,677 @@ class _ExpandableListState extends State<ExpandableList> {
       ), */
 
         );
+  }
+}
+
+// temprory drop down
+class customDropDownListButton extends StatefulWidget {
+  const customDropDownListButton({Key? key}) : super(key: key);
+
+  @override
+  State<customDropDownListButton> createState() =>
+      _customDropDownListButtonState();
+}
+
+class _customDropDownListButtonState extends State<customDropDownListButton> {
+  bool isVisible = false;
+  bool istravellerVisible = false;
+  bool isdropDownOpen = false;
+  bool isCancel = false;
+  bool isDropdownVisible = false;
+  String Travellers = 'Travellers';
+  String Rooms = 'Rooms';
+  int childCount = 0;
+  int adultCount = 1;
+  int infants = 0;
+  bool isSingleVisible = true;
+  bool isDoubleVisible = false;
+  String? selectedValue;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    lng = TranslationPage().getCurrentLang();
+
+    // homeOfferList=
+  }
+
+  String? lng;
+
+  HomeController controller = Get.find<HomeController>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: dropdownButton(context),
+    );
+  }
+
+  Container dropdownButton(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: Get.size.height * 0.05,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(2.5),
+        // border: Border.all(
+        //   color: Colors.grey.shade500.withOpacity(0.6),
+        //   width: 0.5,
+        // ),
+      ),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton2(
+          style: TextStyle(color: Colors.transparent),
+          buttonDecoration: BoxDecoration(
+              border: Border.all(
+            color: Colors.grey.shade500.withOpacity(0.6),
+            width: 0.5,
+          )),
+          hint: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: Text(
+              'English',
+              style: TextStyle(
+                fontSize: 15,
+                color: Theme.of(context).hintColor,
+              ),
+            ),
+          ),
+          items: TranslationPage.langs
+              .map((item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 6),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          item,
+                          style: const TextStyle(
+                              fontSize: 15, color: Colors.black54),
+                        ),
+                      ),
+                    ),
+                  ))
+              .toList(),
+          value: lng,
+          onChanged: (value) {
+            setState(() {
+              this.lng = value.toString();
+              TranslationPage().changeLocale(value.toString());
+            });
+          },
+          buttonElevation: 0,
+          dropdownElevation: 0,
+          buttonHeight: 20,
+          buttonWidth: 0,
+          dropdownMaxHeight: 250,
+          isExpanded: true,
+          itemHeight: 35,
+          // dropdownDecoration: BoxDecoration(
+          //     color: Colors.white,
+          //     border: Border.all(
+          //       color: Colors.grey.shade400.withOpacity(0.7),
+          //       width: 0.7,
+          //     )),
+        ),
+      ),
+    );
+  }
+}
+
+/// ye wala original he
+class CurrencyChanger extends StatefulWidget {
+  const CurrencyChanger({Key? key}) : super(key: key);
+
+  @override
+  State<CurrencyChanger> createState() => _CurrencyChangerState();
+}
+
+class _CurrencyChangerState extends State<CurrencyChanger> {
+  List currencyList = [
+    'USD',
+    'GBP',
+    'SAR',
+    'EUR',
+    'pkr',
+    'JPY',
+    'INR',
+    'CNY',
+    'TRY',
+    'RUB',
+    'IRR',
+  ];
+  String code = 'USD';
+  final controller = Get.find<HomeController>();
+
+  bool isSelect = false;
+  bool selected = true;
+  String? selectedValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        botomsheet();
+        // showModalBottomSheet(
+        //     context: context, builder: (context) => botomsheet());
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 0, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Row(
+                children: [
+                  // SizedBox(
+                  //   width: Get.size.width * 0.085,
+                  // ),
+                  Text(
+                    code,
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.arrow_drop_down)
+          ],
+        ),
+      ),
+    );
+  }
+
+  botomsheet() {
+    // showModalBottomSheet(
+
+    //     context: context, // rather context
+    //     builder: (BuildContext bc) {
+    //       return Container(
+    //         child: new Wrap(
+    //           children: <Widget>[
+    //             ListTile(
+    //                 leading: Icon(Icons.music_note),
+    //                 title: Text('Music'),
+    //                 onTap: () => {}),
+    //             ListTile(
+    //               leading: Icon(Icons.videocam),
+    //               title: Text('Video'),
+    //               onTap: () => {},
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     });
+    showModalBottomSheet(
+      enableDrag: false,
+      isDismissible: false,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.7,
+          maxChildSize: 0.84,
+          minChildSize: 0.4,
+          // context: context,
+          builder: (_, ctrl) {
+            return Container(
+              color: Colors.white,
+              // height: Get.size.height * 0.74,
+              child: Container(
+                height: Get.size.height * 0,
+                child: GetBuilder<HomeController>(builder: (controller) {
+                  if (controller.isLoading.value) {
+                    return Center(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: const Text(''),
+                    ));
+                  }
+                  return ListView.builder(
+                    controller: ctrl,
+                    itemCount: currencyList.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        //     CircleAvatar(
+                        //   backgroundImage: AssetImage(countryImage[index]),
+                        // ),
+                        title: isSelect
+                            ? Text(
+                                controller.modal.value.currencies![index]
+                                    .toString(),
+                                style:
+                                    TextStyle(color: Colors.blue, fontSize: 18),
+                              )
+                            : Text(
+                                controller.modal.value.currencies![index].name
+                                    .toString(),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 18),
+                              ),
+                        onTap: () {
+                          Get.back();
+                          setState(() {
+                            code = controller
+                                .modal.value.currencies![index].name
+                                .toString();
+
+                            // ignore: unrelated_type_equality_checks
+                          });
+                        },
+                      );
+                    },
+                  );
+                }),
+              ),
+            );
+          },
+          // shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.only(
+          //         topLeft: Radius.circular(4), topRight: Radius.circular(4))),
+          // backgroundColor: Colors.white,
+        );
+      },
+      // child:
+    );
+  }
+}
+/*  return Container(
+      margin: EdgeInsets.only(left: 10, right: 0),
+      child: DropdownSearch<String>(
+        popupProps: const PopupProps.modalBottomSheet(
+          showSelectedItems: true,
+          // showSearchBox: true,
+          // fit: FlexFit.loose,
+          // scrollbarProps: ScrollbarProps(crossAxisMargin: 8),
+          constraints:
+              BoxConstraints(maxHeight: 500, maxWidth: double.infinity),
+        ),
+
+        // showSearchBox: true,
+        // mode: Mode.BOTTOM_SHEET,
+        items: [
+          'USD',
+          'GBP',
+          'SAR',
+          'EUR',
+          'pkr',
+          'JPY',
+          'INR',
+          'CNY',
+          'TRY',
+          'RUB',
+          'IRR',
+        ],
+
+        dropdownDecoratorProps: const DropDownDecoratorProps(
+            dropdownSearchDecoration: InputDecoration(
+          border: InputBorder.none,
+        )),
+        onChanged: (v) {},
+        selectedItem: "USD",
+        validator: (String? item) {
+          if (item == null)
+            return "Required field";
+          else if (item == "Brazil")
+            return "Invalid item";
+          else
+            return null;
+        },
+      ),
+    );
+  }
+} */
+
+class Athentication extends StatefulWidget {
+  const Athentication({Key? key}) : super(key: key);
+
+  @override
+  State<Athentication> createState() => _AthenticationState();
+}
+
+class _AthenticationState extends State<Athentication> {
+  String language = 'USD';
+  final controller = Get.find<HomeController>();
+
+  bool isSelect = false;
+
+  String? selectedValue;
+  String? account = 'Account';
+
+  bool isVisible = false;
+  String? lng;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: dropdownButton(context),
+    );
+  }
+
+  Container dropdownButton(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 10, right: 0),
+      child: DropdownSearch<String>(
+        dropdownDecoratorProps: const DropDownDecoratorProps(
+            dropdownSearchDecoration: InputDecoration(
+          border: InputBorder.none,
+        )),
+        // showSearchBox: true,
+        // mode: Mode.BOTTOM_SHEET,
+        popupProps: const PopupProps.modalBottomSheet(
+          showSelectedItems: true,
+          // showSearchBox: true,
+          // fit: FlexFit.loose,
+          // scrollbarProps: ScrollbarProps(crossAxisMargin: 8),
+          constraints:
+              BoxConstraints(maxHeight: 340, maxWidth: double.infinity),
+        ),
+
+        items: [
+          'Customer Login',
+          'Customer Signup',
+          'Agents Login',
+          'Agents Signup',
+          'Supplier Login',
+          'Supplier Signup',
+        ],
+        // dropdownSearchDecoration: InputDecoration(border: InputBorder.none),
+        onChanged: (v) {},
+        selectedItem: account,
+        validator: (String? item) {
+          if (item == null)
+            return "Required field";
+          else if (item == "Brazil")
+            return "Invalid item";
+          else
+            return null;
+        },
+      ),
+    );
+  }
+}
+
+// ye wala b original he language changer class
+class DropDownSearch extends StatefulWidget {
+  const DropDownSearch({Key? key}) : super(key: key);
+
+  @override
+  State<DropDownSearch> createState() => _DropDownSearchState();
+}
+
+class _DropDownSearchState extends State<DropDownSearch> {
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   lng = TranslationPage().getCurrentLang();
+
+  //   // homeOfferList=
+  // }
+
+  late final DropdownSearchBuilder dropdownBuilder;
+  String language = 'English';
+  final controller = Get.find<HomeController>();
+  List<String> countryImage = [
+    'images/arabic.jpg',
+    'images/german.jpg',
+    'images/us.jpg',
+    'images/spanish.jpg',
+    'images/german.jpg',
+    'images/french.jpg',
+    'images/rassian.jpg',
+    'images/turkish.jpg',
+    'images/philippen.png',
+    'images/korean.jpg',
+    'images/Khmer.png',
+    'images/indonesia.png',
+    'images/chines.jpg',
+  ];
+  String image = 'images/us.jpg';
+  bool isSelect = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        botomsheet();
+        // showModalBottomSheet(
+        //     context: context, builder: (context) => botomsheet());
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 0, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              child: Row(
+                children: [
+                  // ClipRRect(
+                  //   borderRadius: BorderRadius.circular(8),
+                  //   child: Image.asset(
+                  //     image,
+                  //     width: 37,
+                  //     height: 37,
+                  //   ),
+                  // ),
+                  Container(
+                    width: 35,
+                    height: 35,
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(image),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 18,
+                  ),
+                  Text(
+                    language,
+                  ),
+                ],
+              ),
+            ),
+            Icon(Icons.arrow_drop_down)
+          ],
+        ),
+      ),
+    );
+  }
+
+  botomsheet() {
+    // showModalBottomSheet(
+
+    //     context: context, // rather context
+    //     builder: (BuildContext bc) {
+    //       return Container(
+    //         child: new Wrap(
+    //           children: <Widget>[
+    //             ListTile(
+    //                 leading: Icon(Icons.music_note),
+    //                 title: Text('Music'),
+    //                 onTap: () => {}),
+    //             ListTile(
+    //               leading: Icon(Icons.videocam),
+    //               title: Text('Video'),
+    //               onTap: () => {},
+    //             ),
+    //           ],
+    //         ),
+    //       );
+    //     });
+    showModalBottomSheet(
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (context) {
+        return DraggableScrollableSheet(
+          initialChildSize: 0.7,
+          maxChildSize: 0.84,
+          minChildSize: 0.4,
+          // context: context,
+          builder: (_, ctrl) {
+            return Container(
+              color: Colors.white,
+              // height: Get.size.height * 0.74,
+              child: Container(
+                height: Get.size.height * 0,
+                child: GetBuilder<HomeController>(builder: (controller) {
+                  if (controller.isLoading.value) {
+                    return Center(
+                        child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: const Text(''),
+                    ));
+                  }
+                  return ListView.builder(
+                    controller: ctrl,
+                    itemCount: controller.modal.value.languages?.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          SizedBox(
+                            height: Get.size.height * 0.015,
+                          ),
+                          ListTile(
+                            leading: SizedBox(
+                                height: Get.size.height * 0.15,
+                                width: Get.size.width * 0.15,
+                                child: Image.asset(countryImage[index])),
+
+                            //     CircleAvatar(
+                            //   backgroundImage: AssetImage(countryImage[index]),
+                            // ),
+                            title: isSelect
+                                ? Text(
+                                    controller
+                                        .modal.value.languages![index].name
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.blue, fontSize: 18),
+                                  )
+                                : Text(
+                                    controller
+                                        .modal.value.languages![index].name
+                                        .toString(),
+                                    style: TextStyle(
+                                        color: Colors.black, fontSize: 18),
+                                  ),
+                            onTap: () {
+                              Get.back();
+                              setState(() {
+                                language = controller
+                                    .modal.value.languages![index].name
+                                    .toString();
+                                image = countryImage[index];
+                                // ignore: unrelated_type_equality_checks
+                              });
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }),
+              ),
+            );
+          },
+          // shape: RoundedRectangleBorder(
+          //     borderRadius: BorderRadius.only(
+          //         topLeft: Radius.circular(4), topRight: Radius.circular(4))),
+          // backgroundColor: Colors.white,
+        );
+      },
+      // child:
+    );
+  }
+}
+
+// ye wala original he
+class AuthPage extends StatefulWidget {
+  const AuthPage({Key? key}) : super(key: key);
+
+  @override
+  State<AuthPage> createState() => _AuthPageState();
+}
+
+class _AuthPageState extends State<AuthPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Builder(
+      builder: (context) {
+        return InkWell(
+          onTap: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return Wrap(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ListTile(
+                      title: Text('Customer Login'),
+                      onTap: () {
+                        Get.to(CustomerLoginPage());
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Customer Signup'),
+                      onTap: () {
+                        Get.to(CustomerSignupPage());
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Agents Login'),
+                      onTap: () {
+                        Get.to(AgentsLogin());
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Agents Signup'),
+                      onTap: () {
+                        Get.to(AgentsSignupPage());
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Supplier Login'),
+                      onTap: () {
+                        Get.to(SupplierLogin());
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Supplier Signup'),
+                      onTap: () {
+                        Get.to(SupplierSignup());
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    // SizedBox(
+                    //   width: Get.size.width * 0.09,
+                    // ),
+                    Text(
+                      'Account',
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                Icon(Icons.arrow_drop_down),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }

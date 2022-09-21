@@ -200,12 +200,12 @@ class _FeatureHotelDetailPageState extends State<FeatureHotelDetailPage>
                     Text(
                       "${widget.startCount} / 5  ",
                       style: TextStyle(
-                          color: TColor.textgreenColor,
+                          color: PColor.textgreenColor,
                           fontWeight: FontWeight.bold),
                     ),
                     Icon(
                       Icons.thumb_up_alt_outlined,
-                      color: TColor.textgreenColor,
+                      color: PColor.textgreenColor,
                       size: 15,
                     ),
                   ],
@@ -241,7 +241,7 @@ class _FeatureHotelDetailPageState extends State<FeatureHotelDetailPage>
               child: Text(
                 "About ${widget.title}",
                 style: TextStyle(
-                    color: TColor.headingTextColor,
+                    color: PColor.headingTextColor,
                     fontSize: 15,
                     fontWeight: FontWeight.w500),
               ),
@@ -252,7 +252,7 @@ class _FeatureHotelDetailPageState extends State<FeatureHotelDetailPage>
             // child: Text(
             //   widget.des.toString(),
             //   style: TextStyle(
-            //     color: TColor.headingTextColor,
+            //     color: PColor.headingTexPColor,
             //     fontSize: 13,
             //   ),
             // ),
@@ -439,7 +439,7 @@ class _FeatureHotelDetailPageState extends State<FeatureHotelDetailPage>
           Text(
             'Policy',
             style: TextStyle(
-                color: TColor.headingTextColor, fontWeight: FontWeight.w600),
+                color: PColor.headingTextColor, fontWeight: FontWeight.w600),
           ),
           Align(
             alignment: Alignment.topLeft,

@@ -7,6 +7,12 @@ abstract class Routes {
   static const VisaSearchPage = '/VisaSearchPage';
   static const FlightDetailPag = '/FlightDetailPage';
   static const FeatureHotelDetailPage = '/FeatureHotelDetailPage';
+  static const CustomerLoginPage = '/CustomerLoginPage';
+  static const CustomerSignupPage = '/CustomerSignupPage';
+  static const AgentsLogin = '/AgentsLogin';
+  static const AgentsSignupPage = '/AgentsSignupPage';
+  static const SupplierSignup = '/SupplierSignup';
+  static const SupplierLogin = '/SupplierLogin';
 
   static String getInitial() => "$bottomnav";
   static String getFlightPageDetail(int pageId) =>

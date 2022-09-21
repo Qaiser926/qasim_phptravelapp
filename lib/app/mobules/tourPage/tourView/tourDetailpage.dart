@@ -40,7 +40,7 @@ import 'package:intl/intl.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/tourPage/tourController/tourController.dart';
 import 'package:phptravelapp/app/mobules/tourPage/tourView/searchPage.dart';
-import 'package:phptravelapp/app/reusableText/reusableText.dart';
+import 'package:phptravelapp/app/reusableText/commonText.dart';
 
 class TourSearchPage extends StatefulWidget {
   @override
@@ -236,7 +236,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
               margin: EdgeInsets.only(right: 13),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: TColor.mainColor.withOpacity(0.6),
+                color: PColor.mainColor.withOpacity(0.6),
               ),
               width: Get.size.width * 0.08,
               height: Get.size.height * 0.07,
@@ -261,7 +261,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
               margin: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: TColor.mainColor.withOpacity(0.6),
+                color: PColor.mainColor.withOpacity(0.6),
               ),
               width: Get.size.width * 0.08,
               height: Get.size.height * 0.07,
@@ -282,7 +282,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-          // color: TColor.mainColor,
+          // color: PColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -312,7 +312,7 @@ class _TourSearchPageState extends State<TourSearchPage> {
     return MaterialButton(
       height: Get.size.height * 0.06,
       minWidth: double.infinity,
-      color: TColor.mainblueColor,
+      color: PColor.mainblueColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
       onPressed: () {},
       child: Text(
@@ -379,7 +379,7 @@ class ReusableEditText extends StatelessWidget {
             Icons.location_on_outlined,
             color: Colors.grey,
           ),
-          fillColor: TColor.mainColor,
+          fillColor: PColor.mainColor,
           filled: true,
           border: OutlineInputBorder(),
           hintText: title,

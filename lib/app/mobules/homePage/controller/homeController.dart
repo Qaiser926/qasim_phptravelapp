@@ -136,7 +136,7 @@ import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/homePageModelClass.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/modelClass.dart';
-import 'package:phptravelapp/app/mobules/homePage/api_servies/api_provider.dart';
+import 'package:phptravelapp/app/mobules/services/api_provider.dart';
 import 'package:phptravelapp/app/mobules/homePage/bottomNav/bottomNavigation.dart';
 
 // class HomeController extends GetxController with StateMixin<List<dynamic>> {

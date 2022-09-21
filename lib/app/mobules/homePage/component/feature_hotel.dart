@@ -23,7 +23,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
         Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -31,7 +31,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                     borderRadius: BorderRadius.circular(8.0),
                     // color: Colors.grey.shade200.withOpacity(0.99),
 
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.transparent,
                         blurRadius: 0,
@@ -41,7 +41,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                     ],
                   ),
                   width: Get.size.width,
-                  height: Get.size.height * 0.44,
+                  height: Get.size.height * 0.413,
                   child: GetBuilder<HomeController>(
                     builder: (controller) {
                       return PageView.builder(
@@ -55,7 +55,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                         // itemCount:controller.modal.value.featuredFlights.length ,
                         itemBuilder: (context, index) {
                           if (controller.isLoading.value) {
-                            return Center(
+                            return const Center(
                                 child: const CircularProgressIndicator());
                           }
                           if (controller.isEmptyData.value) {
@@ -70,18 +70,16 @@ class _FeatureHotelState extends State<FeatureHotel> {
                           return GestureDetector(
                             onTap: () {
                               Get.to(FeatureHotelDetailPage(
-                                title: item[index].title,
+                                title: item![index].title,
                                 des: item[index].desc,
                                 location: item[index].location,
-                                review: item[index]
-                                    .avgReviews!
-                                    .totalReviews
-                                    .toString(),
+                                review: item[index].avgReviews?.totalReviews,
                                 icon: item[index].toString(),
                                 name: item[index].toString(),
                                 // pic=item[index].thumbnail![index],
                                 discoun:
                                     int.parse(item[index].discount.toString()),
+
                                 pic: item[index].thumbnail.toString(),
                                 startCount: int.parse(
                                     item[index].starsCount.toString()),
@@ -110,7 +108,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         left: 10, right: 10, top: 10),
                                     child: Container(
                                       child: Column(
@@ -130,7 +128,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                                                 .length]
                                                         .title ??
                                                     "title",
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontWeight:
                                                         FontWeight.w700),
                                               )),
@@ -144,9 +142,9 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                                             .length]
                                                     .location ??
                                                 "location",
-                                            style: TextStyle(),
+                                            style: const TextStyle(),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 8,
                                           ),
 
@@ -162,7 +160,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                                     .totalReviews ??
                                                 "totalReview"),
                                             itemBuilder: (context, index) =>
-                                                Icon(Icons.star,
+                                                const Icon(Icons.star,
                                                     color: Colors.red),
                                             itemCount: 5,
 
@@ -170,23 +168,23 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                             direction: Axis.horizontal,
                                           ),
 
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 6,
                                           ),
                                           // Text("${item[index%controller.modal.value.featuredHotels!.length].stars.toString()} Reviews"),
 
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 10,
                                           ),
                                           RichText(
                                               text: TextSpan(children: [
-                                            TextSpan(
+                                            const TextSpan(
                                                 text: 'USD',
                                                 style: TextStyle(
                                                     color: Colors.black,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 17)),
-                                            TextSpan(text: '  '),
+                                            const TextSpan(text: '  '),
                                             TextSpan(
                                                 text: item![index %
                                                         controller
@@ -201,16 +199,19 @@ class _FeatureHotelState extends State<FeatureHotel> {
                                                     fontWeight: FontWeight.bold,
                                                     color: Colors.black)),
                                           ])),
+                                          SizedBox(
+                                            height: Get.size.height * 0.01,
+                                          ),
                                           Row(
                                             children: [
                                               Text(
                                                 'featurehotelDetailText'.tr,
                                                 style: TextStyle(fontSize: 12),
                                               ),
-                                              SizedBox(
+                                              const SizedBox(
                                                 width: 6,
                                               ),
-                                              Icon(
+                                              const Icon(
                                                 Icons.arrow_forward_ios,
                                                 size: 12,
                                               )
@@ -229,7 +230,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                     },
                   )),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             GetBuilder<HomeController>(builder: (controller) {
@@ -272,7 +273,7 @@ class _FeatureHotelState extends State<FeatureHotel> {
                 color:
                     isSelected ? Colors.grey : Colors.grey.withOpacity(0.35)),
             color:
-                isSelected ? Colors.black : TColor.mainColor.withOpacity(0.1)),
+                isSelected ? Colors.black : PColor.mainColor.withOpacity(0.1)),
       ),
     );
   }

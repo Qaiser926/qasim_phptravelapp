@@ -6,9 +6,8 @@ import 'package:input_slider/input_slider.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/tourPage/tourView/tourDetailpage.dart';
 
-
-String _selectedLang='en';
-bool selectedLang=false;
+String _selectedLang = 'en';
+bool selectedLang = false;
 
 class DataFilteration extends StatefulWidget {
   @override
@@ -16,77 +15,70 @@ class DataFilteration extends StatefulWidget {
 }
 
 class _DataFilterationState extends State<DataFilteration> {
-  
-  final List locale=[
-    {'name':'ENGLISH','locale':Locale('en','US')},
-    {'name':'АНГЛИЙСКИЙ','locale':Locale('en','IS')},
-    {'name':'姓名','locale':Locale('zh','CN')},
+  final List locale = [
+    {'name': 'ENGLISH', 'locale': Locale('en', 'US')},
+    {'name': 'АНГЛИЙСКИЙ', 'locale': Locale('en', 'IS')},
+    {'name': '姓名', 'locale': Locale('zh', 'CN')},
   ];
 
-
-   String? selected;
-  List<Map> _mapList=[
-    {
-      'id': '1',
-      'image':""
-    }
+  String? selected;
+  List<Map> _mapList = [
+    {'id': '1', 'image': ""}
   ];
 
-
-  updateLanguage(Locale locale){
+  updateLanguage(Locale locale) {
     Get.back();
     Get.updateLocale(locale);
   }
-  builddialog(BuildContext context){
-    showDialog(context: context, builder: (builder){
 
-      return
-
-        AlertDialog(
-        title: Text('Choose a language'),
-        content: Container(
-          width: double.maxFinite,
-          child:ListView.separated(
-            shrinkWrap: true,
-              itemBuilder: (context,index){
-                return InkWell(
-                    onTap: (){
-                      updateLanguage(locale[index]['locale']);
-                    },
-                    child: Text(locale[index]['name'],));
-              },
-              separatorBuilder: (context,index){
-                return Divider(
-                  color: Colors.blue,
-                );
-              },
-              itemCount: locale.length) ,
-        ),
-      );
-
-
-    });
+  builddialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (builder) {
+          return AlertDialog(
+            title: Text('Choose a language'),
+            content: Container(
+              width: double.maxFinite,
+              child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                        onTap: () {
+                          updateLanguage(locale[index]['locale']);
+                        },
+                        child: Text(
+                          locale[index]['name'],
+                        ));
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      color: Colors.blue,
+                    );
+                  },
+                  itemCount: locale.length),
+            ),
+          );
+        });
   }
 
   // const DataFilteration({Key? key}) : super(key: key);
-  static double _lowerValue=1.0;
-  static double _upperValue=1000.0;
-  double brightness=0.0;
-  RangeValues values=RangeValues(_lowerValue, _upperValue);
+  static double _lowerValue = 1.0;
+  static double _upperValue = 1000.0;
+  double brightness = 0.0;
+  RangeValues values = RangeValues(_lowerValue, _upperValue);
 
+  bool isCheck = false;
+  bool isradio = false;
+  bool apartment = false;
+  bool home = false;
+  bool hotel = false;
+  bool resort = false;
 
-  bool isCheck=false;
-  bool isradio=false;
-  bool apartment=false;
-  bool home=false;
-  bool hotel=false;
-  bool resort=false;
-
-  bool freebreaking=false;
-  bool freeparking=false;
-  bool pool =false;
-  bool petfriendly=false;
-  bool freewifi=false;
+  bool freebreaking = false;
+  bool freeparking = false;
+  bool pool = false;
+  bool petfriendly = false;
+  bool freewifi = false;
 
   // void dropdowncallback(){
   //   if(selectedValue is String){
@@ -99,25 +91,29 @@ class _DataFilterationState extends State<DataFilteration> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: TColor.mainColor,
-        surfaceTintColor:TColor.mainColor,
-        title: Text('Filters',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w400),),
+        backgroundColor: PColor.mainColor,
+        surfaceTintColor: PColor.mainColor,
+        title: Text(
+          'Filters',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400),
+        ),
         centerTitle: true,
-      actions: [
-
-      ],
-      automaticallyImplyLeading: false,
-      leading: InkWell(
-          onTap: (){
-            Get.back();
-          },
-          child: selectedLang?Icon(Icons.arrow_back_ios):Icon(Icons.close,color: Colors.black,)),
+        actions: [],
+        automaticallyImplyLeading: false,
+        leading: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: selectedLang
+                ? Icon(Icons.arrow_back_ios)
+                : Icon(
+                    Icons.close,
+                    color: Colors.black,
+                  )),
       ),
-
       body: SingleChildScrollView(
         child: Column(
           children: [
-
             Container(
               // color: Colors.black,
               // child: Scrollbar(
@@ -127,32 +123,104 @@ class _DataFilterationState extends State<DataFilteration> {
                   canvasColor: Colors.black,
                 ),
                 child: DropdownButton(
-                    menuMaxHeight: Get.size.height*0.3,
+                    menuMaxHeight: Get.size.height * 0.3,
                     // dropdownColor: Colors.black,
                     focusColor: Colors.black,
                     style: TextStyle(color: Colors.black),
                     items: [
-                      DropdownMenuItem(child: Text('Turkish',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'turkish',),
-                      DropdownMenuItem(child: Text('Rassian',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'ra',),
-                      DropdownMenuItem(child: Text('Philippen',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'filipin',),
-                      DropdownMenuItem(child: Text('Korean',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'korean',),
-                      DropdownMenuItem(child: Text('Khmer',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'Khmer',),
-                      DropdownMenuItem(child: Text('Indonesia',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'indonesia',),
-                      DropdownMenuItem(child: Text('French',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'french',),
-                      DropdownMenuItem(child: Text('Spanish',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'spanish',),
-                      DropdownMenuItem(child: Text('English',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'en',),
-                      DropdownMenuItem(child: Text('German',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'german',),
-                      DropdownMenuItem(child: Text('Chiness',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'chnes',),
-                      DropdownMenuItem(child: Text('Arabic',style: TextStyle(color: Colors.white,fontSize: 17),),value: 'arabic',),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Turkish',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'turkish',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Rassian',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'ra',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Philippen',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'filipin',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Korean',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'korean',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Khmer',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'Khmer',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Indonesia',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'indonesia',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'French',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'french',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Spanish',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'spanish',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'English',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'en',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'German',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'german',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Chiness',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'chnes',
+                      ),
+                      DropdownMenuItem(
+                        child: Text(
+                          'Arabic',
+                          style: TextStyle(color: Colors.white, fontSize: 17),
+                        ),
+                        value: 'arabic',
+                      ),
                     ],
-                    value: _selectedLang
-                    , onChanged: (value){
-                  setState((){
-                    _selectedLang=value!;
-                    selectedLang=true;
-                  });
-                  Get.updateLocale(Locale(_selectedLang));
-                }),
+                    value: _selectedLang,
+                    onChanged: (value) {
+                      setState(() {
+                        _selectedLang = value.toString();
+                        selectedLang = true;
+                      });
+                      Get.updateLocale(Locale(_selectedLang));
+                    }),
               ),
             ),
 
@@ -173,9 +241,11 @@ class _DataFilterationState extends State<DataFilteration> {
             //   },
             // )
 
-           // commonText('Price ( for 1 night)'),
-            SizedBox(height: 16,),
-           /* Padding(
+            // commonText('Price ( for 1 night)'),
+            SizedBox(
+              height: 16,
+            ),
+            /* Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
@@ -186,8 +256,10 @@ class _DataFilterationState extends State<DataFilteration> {
                 ],
               ),
             ),*/
-            SizedBox(height: 10,),
-          /*  Padding(
+            SizedBox(
+              height: 10,
+            ),
+            /*  Padding(
               padding: const EdgeInsets.all(6.0),
               child: SliderTheme(
                 data: SliderTheme.of(context).copyWith(
@@ -215,9 +287,9 @@ class _DataFilterationState extends State<DataFilteration> {
               ),
             ),
 */
-          /*  commonText('Popular filters'.tr),*/
+            /*  commonText('Popular filters'.tr),*/
 
-        /*  Container(
+            /*  Container(
             width: Get.size.width,
             height: Get.size.height*0.25,
             child: Column(
@@ -400,7 +472,7 @@ class _DataFilterationState extends State<DataFilteration> {
 
 /*
             commonText('Type of Accommodation'.tr),*/
-          /* SwitchListTile(
+            /* SwitchListTile(
              activeColor: TColor.maingreenColor,
              value: (isradio||apartment||home||hotel||resort), onChanged: (index){
              setState((){
@@ -415,7 +487,7 @@ class _DataFilterationState extends State<DataFilteration> {
            },
            title: Text('All'.tr),
            ),*/
-        /*    SwitchListTile( activeColor: TColor.maingreenColor,value: (apartment), onChanged: (index){
+            /*    SwitchListTile( activeColor: TColor.maingreenColor,value: (apartment), onChanged: (index){
               setState((){
 
                 isradio=index;
@@ -474,11 +546,14 @@ class _DataFilterationState extends State<DataFilteration> {
       ),
     );
   }
-  Widget commonText(String title,){
-    return  Align(
+
+  Widget commonText(
+    String title,
+  ) {
+    return Align(
         alignment: Alignment.topLeft,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
           child: Text(title),
         ));
   }

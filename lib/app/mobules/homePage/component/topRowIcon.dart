@@ -29,13 +29,12 @@ class _TopRowIconState extends State<TopRowIcon> {
   ];
   // List<dynamic> imagelist=['images/hotel.svg','images/aeroplane.svg','images/tour.svg','images/visa.svg'];
   List<String> image = [
-        'images/hotel.svg',
-        'images/aeroplane.svg',
-        'images/tour.svg',
-        'images/car.svg',
-        'images/visa.svg'
-      ] ??
-      [];
+    'images/hotel.svg',
+    'images/aeroplane.svg',
+    'images/tour.svg',
+    'images/car.svg',
+    'images/visa.svg'
+  ];
   // List<String> image=[CustomImages.travelIcon,CustomImages.hotelIcon,CustomImages.aeroplaneIcon,CustomImages.discount];
   HomeController controller = Get.put(HomeController());
   // @override
@@ -57,7 +56,7 @@ class _TopRowIconState extends State<TopRowIcon> {
         // dispose: controller.cleanUpTask(),
         builder: (controller) {
           if (controller.isLoading.value) {
-            return Center(
+            return const Center(
                 child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: const CircularProgressIndicator(),
@@ -116,7 +115,7 @@ class _TopRowIconState extends State<TopRowIcon> {
                               width: Get.size.width * 0.15,
                               height: Get.size.height * 0.08,
                               decoration: BoxDecoration(
-                                color: TColor.mainIconColor,
+                                color: PColor.mainIconColor,
                                 shape: BoxShape.circle,
                               ),
                               // child: TopIcon(
@@ -135,6 +134,7 @@ class _TopRowIconState extends State<TopRowIcon> {
                                       child: Container(
                                           child: SvgPicture.asset(
                                         image[index],
+                                        fit: BoxFit.contain,
                                       )),
                                     )),
                               ),

@@ -70,7 +70,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:phptravelapp/app/colors.dart';
-import 'package:phptravelapp/app/reusableText/reusableText.dart';
+import 'package:phptravelapp/app/reusableText/commonText.dart';
 
 import '../visaController/visaController.dart';
 
@@ -161,7 +161,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6),
             border: Border.all(width: 1, color: Colors.grey)
-            // color: TColor.mainColor,
+            // color: PColor.mainColor,
             ),
         child: Center(
           child: DropdownButtonFormField(
@@ -180,7 +180,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
                 ),
               ),
               isExpanded: true,
-              // style: TextStyle(color: TColor.mainblueColor),
+              // style: TextStyle(color: PColor.mainblueColor),
               // underline: SizedBox(),
               // icon: Visibility (visible:false, child: Icon(Icons.arrow_downward)),
               value: valueChose,
@@ -289,7 +289,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
               margin: EdgeInsets.only(right: 13),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: TColor.mainColor.withOpacity(0.6),
+                color: PColor.mainColor.withOpacity(0.6),
               ),
               width: Get.size.width * 0.08,
               height: Get.size.height * 0.07,
@@ -308,7 +308,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
               margin: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: TColor.mainColor.withOpacity(0.6),
+                color: PColor.mainColor.withOpacity(0.6),
               ),
               width: Get.size.width * 0.08,
               height: Get.size.height * 0.07,
@@ -330,7 +330,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
   Widget rangeCalender() {
     return Container(
       decoration: BoxDecoration(
-          // color: TColor.mainColor,
+          // color: PColor.mainColor,
           border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(6)),
       child: ListTile(
@@ -360,7 +360,7 @@ class _VisaSearchPageState extends State<VisaSearchPage> {
     return MaterialButton(
       height: Get.size.height * 0.06,
       minWidth: double.infinity,
-      color: TColor.mainblueColor,
+      color: PColor.mainblueColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
       onPressed: () {},
       child: Text(
@@ -427,7 +427,7 @@ class ReusableEditText extends StatelessWidget {
             Icons.location_on_outlined,
             color: Colors.grey,
           ),
-          fillColor: TColor.mainColor,
+          fillColor: PColor.mainColor,
           filled: true,
           border: OutlineInputBorder(),
           hintText: title,

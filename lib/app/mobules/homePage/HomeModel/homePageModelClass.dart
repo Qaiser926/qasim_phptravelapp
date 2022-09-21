@@ -28,15 +28,15 @@ class HomeOfferListModelClass {
     this.featuredBlog,
   });
 
-  List<Module>? modules;
-  List<Slider>? slider;
-  List<PaymentGateway>? paymentGateways;
-  List<Extra>? extras;
-  List<Currency>? currencies;
-  List<Language>? languages;
+  late List<Module>? modules;
+  late List<Slider>? slider;
+  late List<PaymentGateway>? paymentGateways;
+  late List<Extra>? extras;
+  late List<Currency>? currencies;
+  late List<Language>? languages;
   Cms? cms;
   App? app;
-  List<Social>? social;
+  late List<Social>? social;
   late List<Featured>? featuredHotels;
   late List<FeaturedFlight>? featuredFlights;
   late List<Featured>? featuredTours;
@@ -257,7 +257,7 @@ class Company {
   });
 
   String? href;
-  dynamic? target;
+  dynamic target;
   String? title;
 
   factory Company.fromJson(Map<String, dynamic> json) => Company(
@@ -745,7 +745,7 @@ class Module {
   factory Module.fromJson(Map<String, dynamic> json) => Module(
         name: json["name"],
         status: json["status??"],
-        order: json["order"],
+        order: json["order"].toString(),
       );
 
   Map<String, dynamic> toJson() => {

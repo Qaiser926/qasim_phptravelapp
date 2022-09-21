@@ -40,7 +40,7 @@ class _FeatureCarState extends State<FeatureCar> {
                     ],
                   ),
                   width: Get.size.width,
-                  height: Get.size.height * 0.46,
+                  height: Get.size.height * 0.43,
                   child: GetBuilder<HomeController>(
                     builder: (controller) {
                       return PageView.builder(
@@ -133,7 +133,7 @@ class _FeatureCarState extends State<FeatureCar> {
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(5),
-                                            color: TColor.mainRedColor),
+                                            color: PColor.mainRedColor),
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 5.5, horizontal: 7.4),
@@ -188,6 +188,9 @@ class _FeatureCarState extends State<FeatureCar> {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black)),
                                       ])),
+                                      SizedBox(
+                                        height: Get.size.height * 0.01,
+                                      ),
                                       Row(
                                         children: [
                                           Text(
@@ -257,7 +260,7 @@ class _FeatureCarState extends State<FeatureCar> {
                 color:
                     isSelected ? Colors.grey : Colors.grey.withOpacity(0.35)),
             color:
-                isSelected ? Colors.black : TColor.mainColor.withOpacity(0.1)),
+                isSelected ? Colors.black : PColor.mainColor.withOpacity(0.1)),
       ),
     );
   }

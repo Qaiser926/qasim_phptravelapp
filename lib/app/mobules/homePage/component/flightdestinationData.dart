@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
@@ -5,11 +7,13 @@ import 'package:get_storage/get_storage.dart';
 import 'package:phptravelapp/app/colors.dart';
 import 'package:phptravelapp/app/mobules/flightPage/flightView/flightDetailPages/flightDetailPage.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/homePageModelClass.dart';
+import 'package:phptravelapp/app/mobules/homePage/component/drawer/drawer.dart';
 import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
 import 'package:phptravelapp/routes/app_pages/app_pages.dart';
 import 'package:phptravelapp/routes/app_routes/app_route.dart';
+import 'package:http/http.dart' as http;
 
-import '../api_servies/api_provider.dart';
+import '../../services/api_provider.dart';
 
 class FeatureFlight extends StatefulWidget {
   @override
@@ -22,7 +26,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
   final PageController pageController = PageController();
   double height = 0;
   double width = 0;
-
+  late List flightDetailList;
   @override
   void initState() {
     // TODO: implement initState
@@ -104,21 +108,41 @@ class _FeatureFlightState extends State<FeatureFlight> {
                       // var item = index as  List<HomeOfferListModelClass>;
 
                       return InkWell(
-                        onTap: () {
+                        onTap: () async {
+                          // var url = Uri.parse(
+                          //     'https://phptravels.net/api/api/hotel/detail?appKey=phptravels');
+                          // var mainUrl =
+                          //     ('https://phptravels.net/api/api/main/app?appKey=phptravels&lang=en&currency=usd');
+
+                          // Future<String?> _getdata() async {
+                          //   await http.post(url, body: {'hotel_id': 38}).then(
+                          //       (response) {
+                          //     var data = json.decode(response.body);
+                          //     setState(() {
+                          //       flightDetailList = data['featured_hotels'];
+                          //     });
+                          //     print(response.body);
+                          //   });
+                          // }
+
+                          // var response = await http
+                          //     .post(mainUrl, body: {'hotel_id': 38.toString()});
+                          // print('Response status: ${response.statusCode}');
+                          // print('Response body: ${response.body}');
                           Get.to(
                             FlightDetailPage(
                               from: item![index].from,
                               to: item[index].to,
                             ),
                           );
-                          print('the index is : ${index}');
+                          print('the index is : ${index} and : ${data}');
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              color: TColor.mainColor,
+                              color: PColor.mainColor,
                               width: Get.size.width * 0.4,
                               height: Get.size.height,
                               child: Image.network(
@@ -173,14 +197,14 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                                             .value
                                                             .featuredFlights!
                                                             .length]
-                                                    .title ??
-                                                'not show',
+                                                    .from ??
+                                                'title',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87),
                                           )),
                                           SizedBox(
-                                            width: 0,
+                                            width: 1,
                                           ),
                                           Icon(
                                             Icons.arrow_forward,
@@ -198,8 +222,8 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                                             .value
                                                             .featuredFlights!
                                                             .length]
-                                                    .title ??
-                                                'not show',
+                                                    .to ??
+                                                'title',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
                                                 color: Colors.black87),
@@ -208,7 +232,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 2,
+                                      height: Get.size.height * 0.013,
                                     ),
                                     RichText(
                                         text: TextSpan(children: [
@@ -219,7 +243,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                               fontSize: 15)),
                                       TextSpan(text: '    '),
                                       TextSpan(
-                                          text: 'USD',
+                                          text: "USD",
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               color: Colors.black,
@@ -352,7 +376,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                 color:
                     isSelected ? Colors.grey : Colors.grey.withOpacity(0.35)),
             color:
-                isSelected ? Colors.black : TColor.mainColor.withOpacity(0.1)),
+                isSelected ? Colors.black : PColor.mainColor.withOpacity(0.1)),
       ),
     );
   }
