@@ -15,7 +15,7 @@ import 'package:phptravelapp/app/mobules/flightPage/flightController/flightContr
 import 'package:phptravelapp/app/mobules/flightPage/flightView/flightDetailPages/component.dart';
 import 'package:phptravelapp/app/mobules/flightPage/flightView/flightSearchPage/searchFlight.dart';
 import 'package:phptravelapp/app/mobules/homePage/HomeModel/homePageModelClass.dart';
-import 'package:phptravelapp/app/mobules/services/api_provider.dart';
+import 'package:phptravelapp/app/mobules/services/main_apiProvider.dart';
 import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
 import 'package:phptravelapp/app/mobules/hotelPage/hotelView/featureHotelDetail/featureHotelDetail.dart';
 import 'package:phptravelapp/app/mobules/hotelPage/hotelView/hotelSearchPage/hotelSearchPage.dart';
@@ -103,8 +103,8 @@ class _FlightDetailPageState extends State<FlightDetailPage> {
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    controller.dispose();
-    flightController.dispose();
+    // controller.dispose();
+    // flightController.dispose();
   }
 
   int _value = 1;

@@ -69,20 +69,57 @@ class _FeatureHotelState extends State<FeatureHotel> {
 
                           return GestureDetector(
                             onTap: () {
-                              Get.to(FeatureHotelDetailPage(
-                                title: item![index].title,
-                                des: item[index].desc,
-                                location: item[index].location,
-                                review: item[index].avgReviews?.totalReviews,
-                                icon: item[index].toString(),
-                                name: item[index].toString(),
-                                // pic=item[index].thumbnail![index],
-                                discoun:
-                                    int.parse(item[index].discount.toString()),
+                              // int a = int.parse(item![index].id.toString());
 
-                                pic: item[index].thumbnail.toString(),
-                                startCount: int.parse(
-                                    item[index].starsCount.toString()),
+                              Get.to(FeatureHotelDetailPage(
+                                // id: a,
+                                title: item![index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .title,
+                                des: item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .desc,
+                                location: item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .location,
+                                review: item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .avgReviews
+                                    ?.totalReviews,
+                                //   icon: item[index %
+                                //           controller
+                                //               .modal.value.featuredHotels!.length]
+                                //       .toString(),
+                                //   name: item[index %
+                                //           controller
+                                //               .modal.value.featuredHotels!.length]
+                                //       .toString(),
+                                //   // pic=item[index].thumbnail![index],
+                                discoun: int.parse(item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .discount
+                                    .toString()),
+                                //   discoun: int.parse(item[index %
+                                //     controller
+                                //         .modal.value.featuredHotels!.length]
+                                // .discount.toString()
+                                // ),
+
+                                pic: item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .thumbnail
+                                    .toString(),
+                                startCount: int.parse(item[index %
+                                        controller
+                                            .modal.value.featuredHotels!.length]
+                                    .starsCount
+                                    .toString()),
                               ));
                             },
                             child: Container(

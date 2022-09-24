@@ -11,6 +11,7 @@ import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:phptravelapp/app/mobules/services/data/api/flightDetail_ApiClient.dart';
 import 'dart:convert' as convert;
 
 import '../homePage/HomeModel/homePageModelClass.dart';
@@ -47,6 +48,7 @@ class ApiProvider {
     // print(requestbody.runtimeType);
     // print(response.headers);
     try {
+      FlightDetailApiClientProvider().getDate();
       if (response.body == 200) {
         print('yaha tak to tike he ');
         return homeOfferListModelClassFromJson(response.body);

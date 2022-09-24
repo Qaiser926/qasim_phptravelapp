@@ -4,11 +4,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:phptravelapp/app/language_translation_string/languageTranslation.dart';
-import 'package:phptravelapp/app/mobules/services/api_provider.dart';
+import 'package:phptravelapp/app/mobules/services/main_apiProvider.dart';
 import 'package:phptravelapp/routes/app_pages/app_pages.dart';
+import 'package:phptravelapp/testingPage/dummyPage.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'app/mobules/services/api_provider.dart';
+import 'app/mobules/services/main_apiProvider.dart';
 import 'app/mobules/homePage/controller/homeController.dart';
 
 void main() async {
@@ -47,6 +48,7 @@ class _travelappState extends State<travelapp> {
       theme: ThemeData(useMaterial3: true),
       getPages: AppPages.routes,
       initialRoute: AppPages.INITIAL,
+      // home: DummyPage(),
     );
   }
 }

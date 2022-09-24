@@ -230,32 +230,6 @@ class _LanguageChangeState extends State<LanguageChange> {
   }
 }
 
-final List<DataList> data = <DataList>[
-  DataList(
-    'Mobiles',
-    <DataList>[
-      DataList('iphone'),
-      DataList('vivo'),
-      DataList('oppo'),
-    ],
-  ),
-  DataList(
-    'Laptops',
-    <DataList>[
-      DataList('Dell'),
-      DataList('HP'),
-    ],
-  ),
-  DataList(
-    'name',
-    <DataList>[
-      DataList('qaiser'),
-      DataList('ali'),
-      DataList('ali'),
-    ],
-  ),
-];
-
 class DataList {
   DataList(this.title, [this.children = const <DataList>[]]);
 

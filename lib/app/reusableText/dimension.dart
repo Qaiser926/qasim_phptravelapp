@@ -11,4 +11,7 @@ class Dimensions {
   static double drawerBottomNavigationHight640 = screenHeight / 1.35;
   static double drawerBottomNavigationHight340 = screenHeight / 2.54;
   static double drawerBottomNavigationHight600 = screenHeight / 1.44;
+
+  // sizebox height
+  // static double sizedboxHeight=screenHeight/
 }

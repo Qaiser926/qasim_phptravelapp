@@ -18,6 +18,7 @@ import 'package:phptravelapp/app/mobules/homePage/component/feature_tourData.dar
 import 'package:phptravelapp/app/mobules/homePage/component/myScrollerBar.dart';
 import 'package:phptravelapp/app/mobules/homePage/component/topRowIcon.dart';
 import 'package:phptravelapp/app/mobules/homePage/controller/homeController.dart';
+import 'package:phptravelapp/app/mobules/services/data/api/flightDetail_ApiClient.dart';
 import 'package:phptravelapp/app/reusableText/commonText.dart';
 import 'package:phptravelapp/app/reusableText/reusable_commonText.dart';
 import 'package:phptravelapp/testingPage/testingmodel.dart';
@@ -30,19 +31,6 @@ import '../component/flightdestinationData.dart';
 
 class HomeViewPage extends GetView<HomeController> {
   final homecontroller = Get.put(HomeController());
-  Future<List<UserModels>> getdata(filter) async {
-    var response = await Dio().get(
-      "http://5d85ccfb1e61af001471bf60.mockapi.io/user",
-      queryParameters: {"filter": filter},
-    );
-
-    final data = response.data;
-
-    if (data != null) {
-      return UserModels.fromJsonList(data);
-    }
-    return [];
-  }
 
   String lang = 'english';
   @override
@@ -65,6 +53,11 @@ class HomeViewPage extends GetView<HomeController> {
               // TabComponent(),
               // Obx(() =>Container(
               TopRowIcon(),
+              ElevatedButton(
+                  onPressed: () {
+                    FlightDetailApiClientProvider().getDate();
+                  },
+                  child: Text('press me ')),
               SizedBox(
                 height: Get.size.height * 0.013,
               ),

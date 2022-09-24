@@ -619,6 +619,7 @@ class Featured {
   String? latitude;
   String? longitude;
   String? discount;
+  // int? discount;
   String? address;
   int? price;
   dynamic? currCode;

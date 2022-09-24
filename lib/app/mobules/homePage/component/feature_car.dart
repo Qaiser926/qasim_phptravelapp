@@ -74,143 +74,147 @@ class _FeatureCarState extends State<FeatureCar> {
                           }
                           final item = controller.modal.value.featuredCars;
 
-                          return Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  SizedBox(
-                                    width: Get.size.width,
-                                    height: Get.size.height * 0.23,
-                                    child: Image.network(
-                                      item?[index %
-                                                  controller.modal.value
-                                                      .featuredCars!.length]
-                                              .thumbnail ??
-                                          "thumbnail",
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    left: 10, right: 10, top: 10),
-                                child: Container(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Align(
-                                          alignment: Alignment.topLeft,
-                                          child: Text(
-                                            item?[index %
-                                                        controller
-                                                            .modal
-                                                            .value
-                                                            .featuredCars!
-                                                            .length]
-                                                    .title ??
-                                                "titile",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700),
-                                          )),
-
-                                      Text(
+                          return Container(
+                            // height: Get.size.height * 0.23,
+                            child: Column(
+                              children: [
+                                Stack(
+                                  children: [
+                                    SizedBox(
+                                      width: Get.size.width,
+                                      height: Get.size.height * 0.23,
+                                      child: Image.network(
                                         item?[index %
                                                     controller.modal.value
                                                         .featuredCars!.length]
-                                                .location ??
-                                            "location",
-                                        style: TextStyle(),
+                                                .thumbnail ??
+                                            "thumbnail",
+                                        fit: BoxFit.cover,
                                       ),
-                                      SizedBox(
-                                        height: 8,
-                                      ),
-
-                                      Container(
-                                        width: Get.size.width * 0.26,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(5),
-                                            color: PColor.mainRedColor),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 5.5, horizontal: 7.4),
-                                          child: RatingBarIndicator(
-                                            // rating: 3.3,
-                                            rating: double.parse(
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: 10, right: 10, top: 10),
+                                  child: Container(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Align(
+                                            alignment: Alignment.topLeft,
+                                            child: Text(
                                               item?[index %
                                                           controller
                                                               .modal
                                                               .value
                                                               .featuredCars!
                                                               .length]
-                                                      .avgReviews!
-                                                      .totalReviews ??
-                                                  "total remvoew",
-                                            ),
-                                            itemBuilder: (context, index) =>
-                                                Icon(Icons.star,
-                                                    color: Colors.white),
-                                            itemCount: 5,
+                                                      .title ??
+                                                  "titile",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700),
+                                            )),
 
-                                            itemSize: 17.5,
-                                            direction: Axis.horizontal,
+                                        Text(
+                                          item?[index %
+                                                      controller.modal.value
+                                                          .featuredCars!.length]
+                                                  .location ??
+                                              "location",
+                                          style: TextStyle(),
+                                        ),
+                                        SizedBox(
+                                          height: 8,
+                                        ),
+
+                                        Container(
+                                          width: Get.size.width * 0.26,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                              color: PColor.mainRedColor),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                vertical: 5.5, horizontal: 7.4),
+                                            child: RatingBarIndicator(
+                                              // rating: 3.3,
+                                              rating: double.parse(
+                                                item?[index %
+                                                            controller
+                                                                .modal
+                                                                .value
+                                                                .featuredCars!
+                                                                .length]
+                                                        .avgReviews!
+                                                        .totalReviews ??
+                                                    "total remvoew",
+                                              ),
+                                              itemBuilder: (context, index) =>
+                                                  Icon(Icons.star,
+                                                      color: Colors.white),
+                                              itemCount: 5,
+
+                                              itemSize: 17.5,
+                                              direction: Axis.horizontal,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(
-                                        width: 6,
-                                      ),
-                                      // Text("${item[index%controller.modal.value.featuredCars!.length].stars.toString()} Reviews"),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        // Text("${item[index%controller.modal.value.featuredCars!.length].stars.toString()} Reviews"),
 
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      RichText(
-                                          text: TextSpan(children: [
-                                        TextSpan(
-                                            text: 'USD',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 17)),
-                                        TextSpan(text: '  '),
-                                        TextSpan(
-                                            text: item![index %
-                                                    controller.modal.value
-                                                        .featuredCars!.length]
-                                                .price
-                                                .toString(),
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black)),
-                                      ])),
-                                      SizedBox(
-                                        height: Get.size.height * 0.01,
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'featurehotelDetailText'.tr,
-                                            style: TextStyle(fontSize: 12),
-                                          ),
-                                          SizedBox(
-                                            width: 6,
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward_ios,
-                                            size: 12,
-                                          )
-                                        ],
-                                      )
-                                    ],
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        RichText(
+                                            text: TextSpan(children: [
+                                          TextSpan(
+                                              text: 'USD',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 17)),
+                                          TextSpan(text: '  '),
+                                          TextSpan(
+                                              text: item![index %
+                                                      controller.modal.value
+                                                          .featuredCars!.length]
+                                                  .price
+                                                  .toString(),
+                                              style: TextStyle(
+                                                  fontSize: 17,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black)),
+                                        ])),
+                                        SizedBox(
+                                          height: Get.size.height * 0.01,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              'featurehotelDetailText'.tr,
+                                              style: TextStyle(fontSize: 12),
+                                            ),
+                                            SizedBox(
+                                              width: 6,
+                                            ),
+                                            Icon(
+                                              Icons.arrow_forward_ios,
+                                              size: 12,
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           );
                         },
                       );

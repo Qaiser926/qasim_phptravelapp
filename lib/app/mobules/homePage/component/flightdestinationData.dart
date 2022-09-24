@@ -13,7 +13,7 @@ import 'package:phptravelapp/routes/app_pages/app_pages.dart';
 import 'package:phptravelapp/routes/app_routes/app_route.dart';
 import 'package:http/http.dart' as http;
 
-import '../../services/api_provider.dart';
+import '../../services/main_apiProvider.dart';
 
 class FeatureFlight extends StatefulWidget {
   @override
@@ -107,6 +107,20 @@ class _FeatureFlightState extends State<FeatureFlight> {
                       final item = controller.modal.value.featuredFlights;
                       // var item = index as  List<HomeOfferListModelClass>;
 
+                      /// yaha niche data ko spit kia he first wala show nhe karna chahta our second show karo
+                      String from = item![index %
+                              controller.modal.value.featuredFlights!.length]
+                          .from
+                          .toString();
+                      String fromResult =
+                          from.substring(4, from.lastIndexOf(''));
+
+                      String to = item[index %
+                              controller.modal.value.featuredFlights!.length]
+                          .to
+                          .toString();
+                      String toResult = to.substring(4, to.lastIndexOf(''));
+                      // print(toResult);
                       return InkWell(
                         onTap: () async {
                           // var url = Uri.parse(
@@ -131,11 +145,17 @@ class _FeatureFlightState extends State<FeatureFlight> {
                           // print('Response body: ${response.body}');
                           Get.to(
                             FlightDetailPage(
-                              from: item![index].from,
-                              to: item[index].to,
+                              from: item[index %
+                                      controller
+                                          .modal.value.featuredFlights!.length]
+                                  .from,
+                              to: item[index %
+                                      controller
+                                          .modal.value.featuredFlights!.length]
+                                  .to,
                             ),
                           );
-                          print('the index is : ${index} and : ${data}');
+                          print('the index is : ${index} and');
                         },
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +166,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                               width: Get.size.width * 0.4,
                               height: Get.size.height,
                               child: Image.network(
-                                item?[index %
+                                item[index %
                                             controller.modal.value
                                                 .featuredFlights!.length]
                                         .thumbnail ??
@@ -155,7 +175,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                             ),
                             Padding(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 4),
+                                  horizontal: 10, vertical: 4),
                               child: Container(
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
@@ -165,7 +185,7 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                       height: 2,
                                     ),
                                     Text(
-                                      item?[index %
+                                      item[index %
                                                   controller.modal.value
                                                       .featuredFlights!.length]
                                               .title ??
@@ -191,42 +211,37 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                         children: [
                                           Expanded(
                                               child: Text(
-                                            item?[index %
-                                                        controller
-                                                            .modal
-                                                            .value
-                                                            .featuredFlights!
-                                                            .length]
-                                                    .from ??
-                                                'title',
+                                            // item[index %
+                                            //             controller
+                                            //                 .modal
+                                            //                 .value
+                                            //                 .featuredFlights!
+                                            //                 .length]
+                                            //         .from ??
+                                            fromResult,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                color: Colors.black87),
+                                                color: Colors.black87,
+                                                fontSize: 13),
                                           )),
                                           SizedBox(
                                             width: 1,
                                           ),
                                           Icon(
                                             Icons.arrow_forward,
-                                            size: 19,
+                                            size: 15,
                                             color: Colors.grey.shade600,
                                           ),
                                           SizedBox(
-                                            width: 15,
+                                            width: 10,
                                           ),
                                           Expanded(
                                               child: Text(
-                                            item?[index %
-                                                        controller
-                                                            .modal
-                                                            .value
-                                                            .featuredFlights!
-                                                            .length]
-                                                    .to ??
-                                                'title',
+                                            toResult,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w500,
-                                                color: Colors.black87),
+                                                color: Colors.black87,
+                                                fontSize: 13),
                                           )),
                                         ],
                                       ),
@@ -250,15 +265,11 @@ class _FeatureFlightState extends State<FeatureFlight> {
                                               fontSize: 16.5)),
                                       TextSpan(text: '  '),
                                       TextSpan(
-                                          text: item?[index %
-                                                      controller
-                                                          .modal
-                                                          .value
-                                                          .featuredFlights!
-                                                          .length]
-                                                  .price
-                                                  .toString() ??
-                                              'not show',
+                                          text: item[index %
+                                                  controller.modal.value
+                                                      .featuredFlights!.length]
+                                              .price
+                                              .toString(),
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 16.5,
